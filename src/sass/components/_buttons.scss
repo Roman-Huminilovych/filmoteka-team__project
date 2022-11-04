@@ -1,0 +1,55 @@
+.btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 130px;
+    min-height: 44px;
+    padding: 14px;
+
+    border: 1px solid white;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: transparent;
+
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1.33;
+    color: var(--text-color-main);
+    text-transform: uppercase;
+
+    transition: all var(--transition-prop);
+
+    @include tablet-only() {
+        min-width: 152px;
+    }
+
+    @include desktop() {
+        min-width: 148px;
+    }
+
+    &:focus,
+    &:hover {
+        color: var(--text-color-light);
+
+        background-color: var(--accent-color);
+        border: 1px solid var(--accent-color);
+        filter: var(--btn-shadow);
+    }
+}
+
+.btn--modal {
+    width: 110px;
+    min-width: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+    @include tablet-only() {
+        width: auto;
+        min-width: 125px;
+    }
+
+    @include desktop() {
+        width: auto;
+        min-width: 136px;
+    }
+}
