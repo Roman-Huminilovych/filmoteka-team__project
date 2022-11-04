@@ -19,6 +19,9 @@
 
         &--arrow {
             background-color: var(--bg-color);
+            &:not(.disabled):hover {
+                box-shadow: 1px 1px 2px black;
+            }
         }
 
         &--arrow .disabled {
@@ -36,6 +39,11 @@
         &--dots {
             padding: 13px;
         }
+
+        &:not(&--dots):not(&--current):hover {
+            font-weight: 700;
+        }
+
     }
 
     &__link {
