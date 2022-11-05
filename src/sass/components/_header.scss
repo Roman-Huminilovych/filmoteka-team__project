@@ -10,7 +10,7 @@
     background-position: center;
     background-repeat: no-repeat;
 
-    @include mobile-only (){
+    @include mobile-only () {
     background-image: linear-gradient(to right,
                         rgba(0, 0, 0, 0.56),
                         rgba(0, 0, 0, 0.56)),
@@ -24,6 +24,9 @@
         }
     }
     @include tablet-only() {
+        height: 216px;
+        padding-left: 32px;
+        padding-right: 32px;
         background-image: linear-gradient(to right,
                             rgba(0, 0, 0, 0.56),
                             rgba(0, 0, 0, 0.56)),
@@ -37,6 +40,9 @@
         }
     }
     @include desktop() {
+        height: 216px;
+        padding-left: 32px;
+        padding-right: 32px;
         background-image: linear-gradient(to right,
                             rgba(0, 0, 0, 0.56),
                             rgba(0, 0, 0, 0.56)),
@@ -60,17 +66,15 @@
 }
 
 .logo-svg {
+    display: inline-block;
     fill: #fff;   
     width: 24px;
     height: 24px;
-
-    border: 1px solid #fff;  // delete in the end     !!!!!!!!!!!!!!!
-
-
 }
 
-
 .header__logo-text {
+    display: inline-block;
+    color:rgba(255, 255, 255, 1);
     @include mobile-only(){
         display: none;
     }
@@ -126,8 +130,7 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 16px;
-    //margin-bottom: 16px; // при доданні повідомлення про невдалий пошук
-
+    
     background-color: inherit;
     
 }
@@ -168,8 +171,7 @@ input::placeholder{
     position: absolute;
     right: 0;
     top: 2px;
-    border: 1px solid #fff;  // delete in the end     !!!!!!!!!!!!!!!
-    // border: none;
+   // border: none;
     background-color: inherit;
 
     width: 12px;
