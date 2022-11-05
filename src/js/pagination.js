@@ -53,20 +53,22 @@ export function activatePagination({current, pages}) {
     renderPagination(current, pages);
 
     refs.pagination.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (!e.target.classList.contains('pagination__link')) {
+        if (!e.target.classList.contains('pagination__btn')) {
             return;
         }
-        if (e.target.classList.contains('pagination__link--page')) {
-            renderPagination(+e.target.textContent, pages);
+        if (e.target.classList.contains('pagination__btn--page')) {
+            current = +e.target.textContent;
+            renderPagination(current, pages);
             return;
         }
-        if (e.target.classList.contains('pagination__link--start')) {
-            renderPagination(1, pages);
+        if (e.target.classList.contains('pagination__btn--left')) {
+            current -= 1;
+            renderPagination(current, pages);
             return;
         }
-        if (e.target.classList.contains('pagination__link--end')) {
-            renderPagination(pages, pages);
+        if (e.target.classList.contains('pagination__btn--right')) {
+            current += 1;
+            renderPagination(current, pages);
             return;
         }
     })
@@ -74,18 +76,19 @@ export function activatePagination({current, pages}) {
 
 function disableUnnecessaryArrows (current, pages) {
     const arrows = {
-        start: document.querySelector('.pagination__link--start'),
-        end:  document.querySelector('.pagination__link--end'),
+        left: document.querySelector('.pagination__btn--left'),
+        right:  document.querySelector('.pagination__btn--right'),
     }
-    if (document.querySelector('.disabled')) {
-        document.querySelector('.disabled').classList.remove('disabled');
+    if (arrows.left.disabled === true || arrows.right.disabled === true) {
+        arrows.left.disabled = false;
+        arrows.right.disabled = false;
     }
     if (current === 1) {
-        arrows.start.classList.add('disabled');
+        arrows.left.disabled = true;
         return;
     }
     if (current === pages) {
-        arrows.end.classList.add('disabled');
+        arrows.right.disabled = true;
         return;
     }
 }
