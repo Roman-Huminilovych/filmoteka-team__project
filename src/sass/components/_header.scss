@@ -1,43 +1,79 @@
 .container--header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     padding: 40px 20px 44px;
-
-    border: 2px solid #FF001B;  // delete in the end
-
-    background-image:   linear-gradient(to right,
-                        rgba(0, 0, 0, 0.56),
-                        rgba(0, 0, 0, 0.56)
-                        url(../images/main/header-main-mobile-bg.jpg)
-    );
-
+    height: 230px;
 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 
-    @include retina {
+    @include mobile-only (){
+    background-image: linear-gradient(to right,
+                        rgba(0, 0, 0, 0.56),
+                        rgba(0, 0, 0, 0.56)),
+                        url(../images/main/header-main-mobile-bg.jpg);
+
+        @include retina {
         background-image:   linear-gradient(to right,
                             rgba(0, 0, 0, 0.56),
-                            rgba(0, 0, 0, 0.56)
-                            url(../images/main/header-main-mobile-bg\ @2.jpg)
-        );
+                            rgba(0, 0, 0, 0.56)),
+                            url(../images/main/header-main-mobile-bg\ @2.jpg);
+        }
     }
-                   
-         
+    @include tablet-only() {
+        background-image: linear-gradient(to right,
+                            rgba(0, 0, 0, 0.56),
+                            rgba(0, 0, 0, 0.56)),
+                            url(../images/main/header-main-tablet-bg.jpg);
+        
+        @include retina {
+        background-image:   linear-gradient(to right,
+                            rgba(0, 0, 0, 0.56),
+                            rgba(0, 0, 0, 0.56)),
+                            url(../images/main/header-main-tablet-bg\ @2.jpg);
+        }
+    }
+    @include desktop() {
+        background-image: linear-gradient(to right,
+                            rgba(0, 0, 0, 0.56),
+                            rgba(0, 0, 0, 0.56)),
+                            url(../images/main/header-main-desktop-bg.jpg);
+        
+        @include retina {
+        background-image:   linear-gradient(to right,
+                            rgba(0, 0, 0, 0.56),
+                            rgba(0, 0, 0, 0.56)),
+                            url(../images/main/header-main-desktop-bg\ @2.jpg);
+        }
+    }
 }
 
 .site-menu {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 54px; 
 }
 
 .logo-svg {
-    color: rgb(128, 11, 11);   
+    fill: #fff;   
     width: 24px;
     height: 24px;
+
+    border: 1px solid #fff;  // delete in the end     !!!!!!!!!!!!!!!
+
+
 }
 
-/*
+
 .header__logo-text {
+    @include mobile-only(){
+        display: none;
+    }
     @include tablet-only() {
         font-weight: 500;
         font-size: 30px;
@@ -45,14 +81,12 @@
 
         margin-left: 8px; 
     }
-
     @include desktop() {
         margin-left: 10px;
     }
 }
-*/
 
-.main-nav-list{
+.main-nav-list {
     display: flex;
     flex-direction: row;
     column-gap: 40px;
@@ -69,7 +103,7 @@
     font-size: 12px;
     line-height: calc(14/12);
 
-    color:red;
+    color:rgba(255, 255, 255, 1);
 }
 
 .underline::after{
@@ -87,43 +121,72 @@
 }
 
 .search-form{
+    position: relative;
+    
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 16px;
+    //margin-bottom: 16px; // при доданні повідомлення про невдалий пошук
+
+    background-color: inherit;
     
- }
+}
 
 input {
-    width: 280px;
+    padding: 0;
+    min-width: 280px;
     height: 20px;
     border: none;
-    border-bottom: 1px solid red;
+    outline: none;
+    border-bottom: 1px solid #fff;
+
+    background-color: inherit;
 
     font-size: 12px;
     line-height: calc(14/12);
     font-weight: 400;
-    
+    color:rgba(255, 255, 255, 1);
 }
 
-.submit-btn{
-    position: relative;
-    border: none;
+input::placeholder{
+    color:rgba(255, 255, 255, 1);
 }
+
+// .submit-btn{
+//     position: absolute;
+//     right: 0;
+//     top: 2px;
+//     border: 1px solid red;
+//     // border: none;
+//     background-color: inherit;
+
+//     width: 12px;
+//     height: 12px;
+// }
+
 .search-svg {
     position: absolute;
     right: 0;
     top: 2px;
+    border: 1px solid #fff;  // delete in the end     !!!!!!!!!!!!!!!
+    // border: none;
+    background-color: inherit;
 
     width: 12px;
     height: 12px;
+    
+    width: 12px;
+    height: 12px;
 
-    fill: rgb(46, 16, 145);
+    fill: rgba(255, 255, 255, 1);
 }
 
 .fail-search-message{
-    // font-weight: 400;
+    margin-right: auto;
+    margin-left: auto;
+    width: 280px;
+    font-weight: 400;
     font-size: 14px;
     line-height: 16px;
     color: #FF001B;
-
 }
