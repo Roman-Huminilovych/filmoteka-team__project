@@ -1,9 +1,28 @@
-.container-header{
+.container--header{
     padding: 40px 20px 44px;
 
+    border: 2px solid #FF001B;  // delete in the end
+
+    background-image:   linear-gradient(to right,
+                        rgba(0, 0, 0, 0.56),
+                        rgba(0, 0, 0, 0.56)
+                        url(../images/main/header-main-mobile-bg.jpg)
+    );
 
 
-    //background-image: ;            
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include retina {
+        background-image:   linear-gradient(to right,
+                            rgba(0, 0, 0, 0.56),
+                            rgba(0, 0, 0, 0.56)
+                            url(../images/main/header-main-mobile-bg\ @2.jpg)
+        );
+    }
+                   
+         
 }
 
 .site-menu {
@@ -12,10 +31,12 @@
 }
 
 .logo-svg {
-    fill: rgb(128, 11, 11);  // -- var ?
+    color: rgb(128, 11, 11);   
+    width: 24px;
+    height: 24px;
 }
 
-
+/*
 .header__logo-text {
     @include tablet-only() {
         font-weight: 500;
@@ -29,37 +50,74 @@
         margin-left: 10px;
     }
 }
+*/
+
 .main-nav-list{
-    font-weight: 400;
-    font-size: 12px;
-    line-height: calc(14/12);  
+    display: flex;
+    flex-direction: row;
+    column-gap: 40px;
 }
+
 .header__link {
+    position: relative;
+    margin-bottom: 2px;
+
+    text-align: center;
+
     text-transform: uppercase;
     font-weight: 500;
-    // font-size: 12px;
-    // line-height: calc(14/12);
+    font-size: 12px;
+    line-height: calc(14/12);
+
+    color:red;
 }
 
-input {
-    position: relative;
+.underline::after{
+    content: "";
 
-    width: 280px;
-    height: 20px;
-    border-bottom: 1px solid #fff;
+    position: absolute;
+    bottom: -2px;
 
-    // font-size: 12px;
-    // line-height: calc(14/12);
-    // font-weight: 400;
+    display: block;
+    width: 100%;
+    height: 3px;
+    
+    background-color: #FF001B;
     
 }
 
+.search-form{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 16px;
+    
+ }
+
+input {
+    width: 280px;
+    height: 20px;
+    border: none;
+    border-bottom: 1px solid red;
+
+    font-size: 12px;
+    line-height: calc(14/12);
+    font-weight: 400;
+    
+}
+
+.submit-btn{
+    position: relative;
+    border: none;
+}
 .search-svg {
     position: absolute;
     right: 0;
     top: 2px;
 
-    fill: #fff;
+    width: 12px;
+    height: 12px;
+
+    fill: rgb(46, 16, 145);
 }
 
 .fail-search-message{
