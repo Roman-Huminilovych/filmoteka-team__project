@@ -98,17 +98,14 @@
 
 //Як варіант можна такий рейтинг
 .films__rating {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  // position: absolute;
+  // top: 5px;
+  // right: 5px;
+  margin-left: 8px;
   width: 36px;
   height: 16px;
-  font-weight: 500;
-  font-size: 12px;
-  line-height: 1.17;
+  @include centered();
+  @include font(500, 12px, 1.17, 0);
   text-transform: uppercase;
   background-color: var(--accent-color);
   color: var(--text-color-light);

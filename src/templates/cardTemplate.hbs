@@ -1,0 +1,15 @@
+{{#each this}}
+  <li class='films__item'>
+    <div class='films__img'>
+      <img src='' alt='Film {{title}} poster' loading='lazy' />
+    </div>
+    <div class='films__description'>
+      <p class='films__title'>{{title}}</p>
+      <div class='films__meta'>
+        <p class='films__genres'>{{genre_ids}}</p>
+        <p class='films__data'>{{release_date}}</p>
+        <span class='films__rating'>{{vote_average}}</span>
+      </div>
+    </div>
+  </li>
+{{/each}}
