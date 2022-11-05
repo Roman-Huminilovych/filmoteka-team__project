@@ -1,0 +1,116 @@
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  padding-bottom: var(--section-padding);
+}
+
+.films__item {
+  position: relative;
+  box-shadow: var(--card-shadow);
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow var(--transition-prop);
+  margin-bottom: var(--gutter-mob);
+
+  &:hover {
+    box-shadow: 7px -7px 21px rgba(255, 107, 1, 0.6);
+
+    & .films__img {
+      opacity: 0.8;
+    }
+  }
+
+  // @include tablet-only() {
+  //   &:not(:last-child) {
+  //     margin-bottom: var(--gutter-mob);
+  //   }
+  // }
+
+  // @include tablet() {
+  //   width: calc((100% - 64px) / 2);
+  //   margin-left: 32px;
+  //   margin-bottom: var(--gutter-mob);
+  // }
+
+  // @include desktop() {
+  //   width: calc((100% - 48px) / 3);
+  //   margin-left: 16px;
+  // }
+}
+
+.films__img {
+  min-width: 280px;
+  opacity: 1;
+  transition: opacity var(--transition-prop);
+
+  & > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+/*ЗАБРАТИ НИЖНІЙ МАРДЖИН ОСТАННЬОГО ЕЛЕМЕНТА СПИСКА*/
+// .film__information div:first-child {
+//   margin-bottom: var(--gutter-mob);
+//   .film__item:last-child {
+//     margin-bottom: 0;
+//   }
+// }
+
+.films__description {
+  padding: 10px 5px 2px;
+  //  @include tablet() {
+  //   padding-top: 8px;
+  // }
+}
+
+.films__title {
+  @include font(500, 12px, 1.17, 0);
+  text-transform: uppercase;
+  color: var(--text-color-main);
+  margin-bottom: 2px;
+
+  // @include tablet() {
+  //   line-height: 1.33;
+  // }
+}
+
+.films__meta {
+  display: flex;
+  align-items: center;
+  @include font(500, 12px, 1.33, 0);
+  color: var(--accent-color);
+}
+
+.films__data::before {
+  content: '';
+  display: inline-block;
+  // width: 1px;
+  height: 12px;
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: var(--accent-color);
+}
+
+//Як варіант можна такий рейтинг
+.films__rating {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 16px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.17;
+  text-transform: uppercase;
+  background-color: var(--accent-color);
+  color: var(--text-color-light);
+  border-radius: 5px;
+}
