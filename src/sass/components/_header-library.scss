@@ -6,13 +6,30 @@
   padding-bottom: 62px;
   background-size: cover;
   background-position: center;
+  @include tablet() {
+    padding-bottom: 60px;
+  }
 }
 
 .header__library {
-  background-image: url("../images/library/header-lib-mobile-bg.jpg");
+  background-image: url('../images/library/header-lib-mobile-bg.jpg');
 
   @include retina() {
-    background-image: url("../images/library/header-lib-mobile-bg @2.jpg");
+    background-image: url('../images/library/header-lib-mobile-bg @2.jpg');
+  }
+  @include tablet() {
+    background-image: url('../images/library/header-lib-tablet-bg.jpg');
+
+    @include retina() {
+      background-image: url('../images/library/header-lib-tablet-bg @2.jpg');
+    }
+  }
+  @include desktop() {
+    background-image: url('../images/library/header-lib-desktop-bg.jpg');
+
+    @include retina() {
+      background-image: url('../images/library/header-lib-desktop-bg @2.jpg');
+    }
   }
 }
 
@@ -22,33 +39,30 @@
   align-items: center;
 }
 
-@include mobile-only() {
-  .header__logo--hidden {
-    display: none;
-  }
-}
 .header__logo {
-  margin-right: 10px;
   display: flex;
   align-items: center;
-  &:hover,
-  &:focus {
-    text-decoration: none;
+  color: var(--text-color-light);
+}
+
+.logo-text {
+  display: none;
+  margin-left: 10px;
+  @include tablet() {
+    display: inline-block;
+    @include font(500, 30px, 1.17);
   }
 }
 
 .nav__link {
-  font-weight: 500;
-  font-size: 12px;
+  @include font(500, 12px, 1.167);
   text-transform: uppercase;
-  line-height: 1.167;
   color: var(--text-color-light);
-  transition: color 250ms linear;
+  transition: color var(--transition-prop);
 
   &:hover,
   &:focus {
     color: var(--text-color-accent);
-    text-decoration: none;
   }
 }
 
@@ -63,19 +77,26 @@
 
 .nav__list {
   display: flex;
-}
-
-.nav__item:not(:last-child) {
-  margin-right: 10px;
+  gap: 39px;
+  @include tablet-only() {
+    gap: 40px;
+  }
 }
 
 .nav__link--active {
-  border-bottom: 3px solid #ff001b;
+  border-bottom: 3px solid var(--menu-line-color);
 }
 
 // LIBRARY BUTTON
 .library-cont {
-  margin-top: 58px;
+  margin-top: 60px;
   display: flex;
   gap: 20px;
+  @include tablet() {
+    gap: 32px;
+    margin-top: 40px;
+  }
+  @include desktop() {
+    gap: 16px;
+  }
 }
