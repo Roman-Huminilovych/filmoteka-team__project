@@ -43,11 +43,12 @@
   }
 }
 
-.btn--modal {
+.modal__btn {
   width: 110px;
   min-width: auto;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  height: 44px;
+  padding: 6px;
+  border: 1px solid #000000;
 
   @include tablet-only() {
     width: auto;

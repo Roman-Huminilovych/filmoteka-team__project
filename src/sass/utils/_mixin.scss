@@ -1,9 +1,7 @@
 //use @include font(400, 14, 1.71, 0.2) {...}
-@mixin font($fw, $fz, $lh, $ls) {
+@mixin font($fw, $fz, $lh) {
   font-weight: $fw;
   font-size: $fz;
-  line-height: $lh;
-  letter-spacing: $ls;
 }
 
 //mixins for flex layout

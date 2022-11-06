@@ -1,0 +1,41 @@
+.footer { 
+  background-color: var(--bg-color); 
+  padding: 27px 36px 27px 48px; 
+
+  @include tablet() { 
+    display: flex; 
+    padding: 30px 143px; 
+    align-items: center; 
+  } 
+  @include desktop() { 
+    padding: 29px 0; 
+    justify-content: center; 
+  } 
+} 
+
+.footer__copyright { 
+  width: 240px; 
+  margin: 0 auto; 
+
+  font-size: 14px; 
+  line-height: 1.75; 
+  text-align: center; 
+  color: #545454; 
+
+  @include tablet() { 
+    width: auto; 
+
+    font-size: 16px; 
+    line-height: 1.18; 
+  } 
+} 
+
+.footer a { 
+  color: inherit; 
+  text-decoration: underline; 
+} 
+
+.footer__heart-icon { 
+  margin-left: 10px; 
+  margin-right: 10px; 
+}
