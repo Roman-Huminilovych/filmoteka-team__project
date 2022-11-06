@@ -1,0 +1,8 @@
+{{#each this}}
+{{#if dots}} <li class="pagination__item pagination__item--dots">{{page}}</li>
+{{else if current}} 
+<li class="pagination__item pagination__item--current">{{page}}</li>
+{{else}} 
+<li class="pagination__item"><button type="button" class="pagination__btn pagination__btn--page">{{page}}</button></li> 
+{{/if}}
+{{/each}}
