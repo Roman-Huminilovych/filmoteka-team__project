@@ -9,11 +9,11 @@
     </div>
     <div class='films__description'>
       <p class='films__title'>{{title}}</p>
-      <div class='films__meta'>
-        <p class='films__genres'>{{genre_ids}} |</p>
-        <p class='films__data'>{{release_date}}</p>
+      <p class='films__meta'>{{genre_ids}}<span class='films__meta-separator'>
+          |
+        </span>{{release_date}}
         <span class='films__rating'>{{vote_average}}</span>
-      </div>
+      </p>
     </div>
   </li>
 {{/each}}
