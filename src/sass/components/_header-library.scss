@@ -1,0 +1,81 @@
+.header {
+  background-color: rgba(0, 0, 0, 0.56);
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 40px;
+  padding-bottom: 62px;
+  background-size: cover;
+  background-position: center;
+}
+
+.header__library {
+  background-image: url("../images/library/header-lib-mobile-bg.jpg");
+
+  @include retina() {
+    background-image: url("../images/library/header-lib-mobile-bg @2.jpg");
+  }
+}
+
+.header__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@include mobile-only() {
+  .header__logo--hidden {
+    display: none;
+  }
+}
+.header__logo {
+  margin-right: 10px;
+  display: flex;
+  align-items: center;
+  &:hover,
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+.nav__link {
+  font-weight: 500;
+  font-size: 12px;
+  text-transform: uppercase;
+  line-height: 1.167;
+  color: var(--text-color-light);
+  transition: color 250ms linear;
+
+  &:hover,
+  &:focus {
+    color: var(--text-color-accent);
+    text-decoration: none;
+  }
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.nav__list {
+  display: flex;
+}
+
+.nav__item:not(:last-child) {
+  margin-right: 10px;
+}
+
+.nav__link--active {
+  border-bottom: 3px solid #ff001b;
+}
+
+// LIBRARY BUTTON
+.library-cont {
+  margin-top: 58px;
+  display: flex;
+  gap: 20px;
+}
