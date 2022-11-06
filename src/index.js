@@ -1,4 +1,6 @@
+import { activatePagination } from "./js/pagination";
 import { createMarkup } from './js/renderGallery.js';
+
 createMarkup([
   {
     title: 'ababab',
@@ -37,3 +39,6 @@ createMarkup([
     vote_average: 8,
   },
 ]);
+
+activatePagination({current: 15, pages: 50});
+
