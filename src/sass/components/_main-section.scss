@@ -65,7 +65,7 @@
 }
 
 .films__title {
-  @include font(500, 12px, 1.17, 0);
+  @include font(500, 12px, 1.17);
   text-transform: uppercase;
   color: var(--text-color-main);
   margin-bottom: 2px;
@@ -78,7 +78,7 @@
 .films__meta {
   display: flex;
   align-items: center;
-  @include font(500, 12px, 1.33, 0);
+  @include font(500, 12px, 1.33);
   color: var(--accent-color);
 }
 .films__meta-separator {
@@ -95,7 +95,7 @@
   width: 36px;
   height: 16px;
   @include centered();
-  @include font(500, 12px, 1.17, 0);
+  @include font(500, 12px, 1.17);
   background-color: var(--accent-color);
   color: var(--text-color-light);
   border-radius: 5px;
