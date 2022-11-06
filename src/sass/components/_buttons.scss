@@ -14,7 +14,7 @@
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
-  color: var(--text-color-light);
+  color: var(--text-color-main);
   text-transform: uppercase;
 
   transition: all var(--transition-prop);
@@ -27,11 +27,15 @@
     min-width: 148px;
   }
 
-  &:active,
+  &--header {
+    color: var(--text-color-light);
+  }
+
+  &.active,
   &:focus,
   &:hover,
   &.accent-btn {
-    // color: var(--text-color-light);
+    color: var(--text-color-light);
 
     background-color: var(--accent-color);
     border: 1px solid var(--accent-color);

@@ -9,10 +9,10 @@
 }
 
 .header__library {
-  background-image: url('../images/library/header-lib-mobile-bg.jpg');
+  background-image: url("../images/library/header-lib-mobile-bg.jpg");
 
   @include retina() {
-    background-image: url('../images/library/header-lib-mobile-bg @2.jpg');
+    background-image: url("../images/library/header-lib-mobile-bg @2.jpg");
   }
 }
 
@@ -52,12 +52,6 @@
   }
 }
 
-.nav {
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-}
-
 .nav-container {
   display: flex;
   align-items: center;
@@ -69,7 +63,6 @@
 
 .nav__list {
   display: flex;
-  align-items: center;
 }
 
 .nav__item:not(:last-child) {
