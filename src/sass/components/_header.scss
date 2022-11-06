@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
 
-    padding: 40px 20px 44px;
+    padding: 40px 20px 92px;
     height: 230px;
 
     background-size: cover;
@@ -23,10 +23,13 @@
                             url(../images/main/header-main-mobile-bg\ @2.jpg);
         }
     }
-    @include tablet-only() {
+
+    @include tablet () {
         height: 216px;
-        padding-left: 32px;
-        padding-right: 32px;
+        padding: 40px 32px 80px;
+    }
+
+    @include tablet-only() {
         background-image: linear-gradient(to right,
                             rgba(0, 0, 0, 0.56),
                             rgba(0, 0, 0, 0.56)),
@@ -39,10 +42,8 @@
                             url(../images/main/header-main-tablet-bg\ @2.jpg);
         }
     }
+
     @include desktop() {
-        height: 216px;
-        padding-left: 32px;
-        padding-right: 32px;
         background-image: linear-gradient(to right,
                             rgba(0, 0, 0, 0.56),
                             rgba(0, 0, 0, 0.56)),
@@ -62,26 +63,30 @@
     justify-content: space-between;
     align-items: center;
 
-    margin-bottom: 54px; 
+    margin-bottom: 54px;
+    
+    @include tablet () {
+        margin-bottom: 40px;
+    }
 }
 
 .logo-svg {
-    display: inline-block;
-    fill: #fff;   
     width: 24px;
     height: 24px;
+    fill: rgba(255, 255, 255, 1);  
 }
 
 .header__logo-text {
     display: inline-block;
     color:rgba(255, 255, 255, 1);
+
     @include mobile-only(){
         display: none;
     }
-    @include tablet-only() {
+    @include tablet() {
         font-weight: 500;
         font-size: 30px;
-        line-height: calc(35/30);
+        line-height: calc(35.16/30);
 
         margin-left: 8px; 
     }
@@ -121,7 +126,6 @@
     height: 3px;
     
     background-color: #FF001B;
-    
 }
 
 .search-form{
@@ -132,7 +136,6 @@
     margin-bottom: 16px;
     
     background-color: inherit;
-    
 }
 
 input {
@@ -149,46 +152,38 @@ input {
     line-height: calc(14/12);
     font-weight: 400;
     color:rgba(255, 255, 255, 1);
+
+    @include tablet-only(){
+        min-width: 336px;
+    }
+    @include desktop(){
+        min-width: 394px;
+    }
 }
 
 input::placeholder{
     color:rgba(255, 255, 255, 1);
 }
 
-// .submit-btn{
-//     position: absolute;
-//     right: 0;
-//     top: 2px;
-//     border: 1px solid red;
-//     // border: none;
-//     background-color: inherit;
+.submit-btn{
+    position: absolute;
+    right: -15px;
+    top: -10px;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
 
-//     width: 12px;
-//     height: 12px;
-// }
+    width:40px;
+    height: 40px;
+}
 
 .search-svg {
     position: absolute;
-    right: 0;
-    top: 2px;
-   // border: none;
-    background-color: inherit;
+    right: 15px;
+    top: 12px;
 
-    width: 12px;
-    height: 12px;
-    
     width: 12px;
     height: 12px;
 
     fill: rgba(255, 255, 255, 1);
-}
-
-.fail-search-message{
-    margin-right: auto;
-    margin-left: auto;
-    width: 280px;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 16px;
-    color: #FF001B;
 }
