@@ -1,3 +1,3 @@
-import { activatePagination } from "./js/pagination";
+import {renderTrending} from './js/render-trending'; 
 
-activatePagination({current: 15, pages: 50});
+renderTrending();
