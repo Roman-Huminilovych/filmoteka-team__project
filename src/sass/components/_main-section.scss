@@ -1,0 +1,102 @@
+.films {
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  @include tablet() {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--gutter);
+  }
+  @include desktop() {
+    gap: 16px;
+  }
+}
+.films__item {
+  // Для верхнього рейтингу, якщо всім ок можна -  position: relative;
+  box-shadow: var(--card-shadow);
+  border-radius: 5px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: box-shadow var(--transition-prop);
+
+  &:hover {
+    box-shadow: 7px -7px 21px rgba(255, 107, 1, 0.6);
+
+    & .films__img {
+      opacity: 0.8;
+    }
+  }
+  @include mobile-only() {
+    margin-bottom: var(--gutter-mob);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  @include tablet-only() {
+    width: calc((50% - 16px));
+  }
+
+  @include desktop() {
+    width: calc((33.33% - 10.66px));
+  }
+}
+
+.films__img {
+  min-width: 280px;
+  transition: opacity var(--transition-prop);
+
+  //Фіксить баг коли змінюється розмір екрану, картинка залишається у картці
+  & > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.films__description {
+  padding: 10px 5px 2px;
+  @include tablet() {
+    padding-top: 8px;
+  }
+}
+
+.films__title {
+  @include font(500, 12px, 1.17, 0);
+  text-transform: uppercase;
+  color: var(--text-color-main);
+  margin-bottom: 2px;
+
+  @include tablet() {
+    line-height: 1.33;
+  }
+}
+
+.films__meta {
+  display: flex;
+  align-items: center;
+  @include font(500, 12px, 1.33, 0);
+  color: var(--accent-color);
+}
+.films__meta-separator {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.films__rating {
+  // Як варіант можна такий, верхінй рейтинг зробити
+  // position: absolute;
+  // top: 5px;
+  // right: 5px;
+  margin-left: 8px;
+  width: 36px;
+  height: 16px;
+  @include centered();
+  @include font(500, 12px, 1.17, 0);
+  background-color: var(--accent-color);
+  color: var(--text-color-light);
+  border-radius: 5px;
+}
