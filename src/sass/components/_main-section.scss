@@ -31,6 +31,10 @@
   }
   @include mobile-only() {
     margin-bottom: var(--gutter-mob);
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
   @include tablet-only() {
     width: calc((50% - 16px));
