@@ -11,29 +11,59 @@
   }
 }
 
-.header__library {
-  background-image: url('../images/library/header-lib-mobile-bg.jpg');
+.header--library {
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    ),
+    url("../images/library/header-lib-mobile-bg.jpg");
 
   @include retina() {
-    background-image: url('../images/library/header-lib-mobile-bg @2.jpg');
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url("../images/library/header-lib-mobile-bg @2.jpg");
   }
   @include tablet() {
-    background-image: url('../images/library/header-lib-tablet-bg.jpg');
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url("../images/library/header-lib-tablet-bg.jpg");
 
     @include retina() {
-      background-image: url('../images/library/header-lib-tablet-bg @2.jpg');
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url("../images/library/header-lib-tablet-bg @2.jpg");
     }
   }
   @include desktop() {
-    background-image: url('../images/library/header-lib-desktop-bg.jpg');
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url("../images/library/header-lib-desktop-bg.jpg");
 
     @include retina() {
-      background-image: url('../images/library/header-lib-desktop-bg @2.jpg');
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url("../images/library/header-lib-desktop-bg @2.jpg");
     }
   }
 }
 
-.header__container {
+.header__wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,7 +75,7 @@
   color: var(--text-color-light);
 }
 
-.logo-text {
+.header__logo-text {
   display: none;
   margin-left: 10px;
   @include tablet() {
