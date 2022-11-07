@@ -1,0 +1,250 @@
+.modal-team {
+  position: relative;
+  // top: 20px;
+  // left: 50%;
+  // transform: translate(-50%, 0%);
+  // width: 280px;
+  max-width: 480px;
+  // height: 940px;
+  max-height: 100%;
+  background: #ffffff;
+  padding: 48px 20px 40px 20px;
+  overflow: auto;
+  @include tablet {
+    // top: 219px;
+    // left: 50%;
+    // transform: translate(-50%, 0%);
+    // max-width: 100%;
+    padding: 40px 72px 40px 36px;
+    // display: flex;
+  }
+  // @include desktop {
+  //   // top: 150px;
+  //   // left: 50%;
+  //   // transform: translate(-50%, 0%);
+  //   display: flex;
+  //   max-width: 100%;
+  //   // height: 558px;
+  //   padding: 40px 12px;
+  // }
+}
+
+.reviews {
+  padding-top: 20px;
+
+  @include tablet-only() {
+    padding-bottom: 20px;
+  }
+}
+
+.reviews .container {
+  // @include tablet {
+  //   padding-left: 74px;
+  //   padding-right: 74px;
+  // }
+  // @include desktop {
+  //   padding-left: 116px;
+  //   padding-right: 116px;
+  // }
+}
+
+.reviews__img {
+  height: 85px;
+  border-radius: 44px;
+  margin: 0 auto 32px auto;
+  // @include tablet {
+  //   margin-bottom: 20px;
+  // }
+  // @include desktop {
+  //   margin-bottom: 16px;
+  // }
+}
+
+.reviews__bg {
+  padding: 43px 50px 17px;
+  position: relative;
+
+  background-color: #fafafa;
+
+  @include tablet-only() {
+    padding: 20px 6px 36px;
+  }
+
+  // @include desktop() {
+  //   padding: 47px 74px 32px 72px;
+  // }
+
+  &::after {
+    content: ". . .";
+    display: block;
+    position: absolute;
+    font-size: 40px;
+    color: var(--primary-color);
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include tablet-only {
+      bottom: -20px;
+    }
+    // @include desktop {
+    //   bottom: -36px;
+    // }
+  }
+}
+
+.reviews__bg-line {
+  padding: 0 8px 0 15px;
+
+  background-color: var(--primary-color);
+
+  @include tablet-only() {
+    padding: 0 49px 0 45px;
+
+    background-image: repeating-linear-gradient(
+      transparent,
+      transparent 29.1px,
+      #e1e1e1 29.1px,
+      #e1e1e1 30.1px
+    );
+  }
+
+  // @include desktop() {
+  //   background-image: repeating-linear-gradient(
+  //     transparent,
+  //     transparent 28.76px,
+  //     #e1e1e1 28.76px,
+  //     #e1e1e1 29.76px
+  //   );
+  // }
+}
+
+.reviews__text {
+  display: block;
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+
+  font-weight: 500;
+  font-size: 12px;
+  text-align: center;
+  color: black;
+
+  // @include tablet {
+  //   padding: 0;
+  //   width: 514px;
+  //   font-size: 14px;
+  //   line-height: 2.16;
+  // }
+  // @include desktop {
+  //   width: 750px;
+  //   font-size: 16px;
+  //   line-height: 1.86;
+  // }
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    display: block;
+    left: -12px;
+    top: -12px;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 54px;
+    height: 40px;
+    background-image: url(../images/reviews/quotes.png);
+
+    @include tablet-only() {
+      left: -45px;
+      top: -17px;
+      width: 60.35px;
+    }
+
+    // @include desktop() {
+    //   left: -37px;
+    //   top: -15px;
+    //   width: 54px;
+    // }
+  }
+}
+
+.reviews__name {
+  margin-top: 36px;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: center;
+  color: var(--text-color-main);
+
+  @include tablet-only {
+    margin-top: 24px;
+    font-size: 16px;
+  }
+  // @include desktop {
+  //   margin-top: 36px;
+  //   font-size: 20px;
+  // }
+}
+
+
+// slick 
+.slick-list {
+  overflow: hidden;
+}
+
+.slick-track {
+  display: flex;
+  align-items: flex-start;
+}
+
+.slick-dots {
+  display: flex;
+  align-items: top;
+  justify-content: center;
+  margin-top: 8px;
+
+  // @include tablet() {
+  //   margin-top: 24px;
+  // }
+}
+
+.slick-dots li {
+  margin: 0 9px;
+}
+
+.slick-dots button {
+  font-size: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #d9d9d9;
+  border: 0;
+}
+
+.slick-dots button:hover {
+  cursor: pointer;
+}
+
+li.slick-active button {
+  font-size: 0;
+  border-radius: 0;
+  background-color: #fff;
+  border: 0;
+  width: 12.4px;
+  height: 11.84px;
+  background-image: url("../images/reviews/carousel-home.svg");
+  background-repeat: no-repeat;
+  background-position: left top;
+}
+
+.coffee-scheme li.slick-active button {
+  background-image: url("../images/reviews/carousel-home-coffee.svg");
+}
+
+.green-scheme li.slick-active button {
+  background-image: url("../images/reviews/carousel-home-green.svg");
+}
+
+li.slick-active button:hover {
+  cursor: pointer;
+}
