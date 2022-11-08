@@ -1,6 +1,6 @@
 .films {
-    margin-left: auto;
-    margin-right: auto;
+    width: fit-content;
+    margin: 0 auto;
     padding-top: 20px;
     padding-bottom: 40px;
   
@@ -17,7 +17,6 @@
     // Для верхнього рейтингу, якщо всім ок можна -  position: relative;
     box-shadow: var(--card-shadow);
     border-radius: 5px;
-    overflow: hidden;
     cursor: pointer;
     transition: box-shadow var(--transition-prop);
   
@@ -36,23 +35,33 @@
       }
     }
     @include tablet-only() {
-      width: calc((50% - 16px));
+      flex-basis: calc((50% - 16px));
     }
   
     @include desktop() {
-      width: calc((33.33% - 10.66px));
+      flex-basis: calc((33.33% - 10.66px));
     }
   }
   
   .films__img {
-    min-width: 280px;
+
     transition: opacity var(--transition-prop);
   
     //Фіксить баг коли змінюється розмір екрану, картинка залишається у картці
     & > img {
-      height: 100%;
-      width: 100%;
+      width: 280px;
+      height: 398px;
       object-fit: cover;
+
+      @include tablet-only {
+        width: 336px;
+        height: 455px;
+      }
+
+      @include desktop {
+        width: 395px;
+        height: 574px;
+      }
     }
   }
   
@@ -80,9 +89,11 @@
     @include font(500, 12px, 1.33);
     color: var(--accent-color);
   }
-  .films__meta-separator {
-    margin-left: 5px;
-    margin-right: 5px;
+
+  .films__genre {
+    border-right: solid 1px currentColor;
+    padding-right: .5em;
+    margin-right: .5em;
   }
   
   .films__rating {
