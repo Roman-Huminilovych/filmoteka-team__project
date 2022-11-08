@@ -61,13 +61,13 @@ a {
     }
 
     @include tablet-only() {
-        width: $tablet;
+        max-width: $tablet;
         padding-left: var(--gutter);
         padding-right: var(--gutter);
     }
 
     @include desktop() {
-        width: $desktop;
+        max-width: $desktop;
         padding-left: var(--gutter);
         padding-right: var(--gutter);
     }
