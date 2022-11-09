@@ -39,14 +39,3 @@ function onInput() {
     refs.searchBtn.disabled = true;
   }
 }
-
-
-
-
-
-
-
-
-
-
-
