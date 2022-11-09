@@ -2,6 +2,20 @@ import { renderTrending } from './js/render-trending';
 import { onSubmit } from './js/onSubmit';
 import { renderTrendingWithScroll } from './js/render-trending-mobile-scroll';
 import debounce from 'lodash.debounce';
+// import $ from 'jquery';
+// import 'slick-carousel';
+
+$('.carousel').slick({
+  dots: true,
+  arrows: false,
+  speed: 1000,
+  easing: 'ease',
+  autoplay: true,
+  autoplaySpeed: 5000,
+  pauseOnFocus: true,
+  pauseOnHover: true,
+  pauseOnDotsHover: true,
+});
 
 const refs = {
   searchForm: document.querySelector('#search-form'),
@@ -25,3 +39,14 @@ function onInput() {
     refs.searchBtn.disabled = true;
   }
 }
+
+
+
+
+
+
+
+
+
+
+
