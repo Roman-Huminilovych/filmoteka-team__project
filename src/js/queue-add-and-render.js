@@ -1,8 +1,6 @@
 //F15, F19
 import Notiflix from 'notiflix';
-import createMarkup from './renderGallery';
-import renderTrending from './render-trending';
-
+import createMarkup from './render-searchQuery';
 
 const container = document.querySelector('.films');
 
