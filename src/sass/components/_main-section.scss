@@ -89,6 +89,12 @@
   color: var(--accent-color);
 }
 
+  .films__genre {
+    border-right: solid 1px currentColor;
+    padding-right: .5em;
+    margin-right: .5em;
+}
+
 .films__rating {
   margin-left: 8px;
   width: 36px;

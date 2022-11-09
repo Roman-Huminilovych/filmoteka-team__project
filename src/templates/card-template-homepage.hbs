@@ -1,0 +1,23 @@
+{{#each this}}
+<li class='films__item'>
+    <div class='films__img'>
+        {{#if poster_path}}
+        <img src='https://image.tmdb.org/t/p/w342{{poster_path}}' alt='Film "{{title}}" poster' loading='lazy' />
+        {{else}}
+        <img src='https://sd.keepcalms.com/i-w600/keep-calm-poster-not-found.jpg' alt='Film "{{title}}" poster'
+            loading='lazy' />
+        {{/if}}
+    </div>
+    <div class='films__description'>
+        <p class='films__title'>{{title}}</p>
+        <p class='films__meta'>
+            <span class="films__genre">
+                {{genre_ids}}
+            </span>
+            <span class='films__meta-separator'>|
+            </span>
+            <span class="films__date">{{release_date}}</span>
+        </p>
+    </div>
+</li>
+{{/each}}
