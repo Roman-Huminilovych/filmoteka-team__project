@@ -1,0 +1,195 @@
+.container--header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding-top: 40px;
+    padding-bottom: 92px;
+    height: 230px;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include mobile-only() {
+        background-image: linear-gradient(
+                to right,
+                rgba(0, 0, 0, 0.56),
+                rgba(0, 0, 0, 0.56)
+            ),
+            url(../images/main/header-main-mobile-bg.jpg);
+
+        @include retina {
+            background-image: linear-gradient(
+                    to right,
+                    rgba(0, 0, 0, 0.56),
+                    rgba(0, 0, 0, 0.56)
+                ),
+                url(../images/main/header-main-mobile-bg\ @2.jpg);
+        }
+    }
+
+    @include tablet() {
+        height: 216px;
+
+        padding-bottom: 80px;
+    }
+
+    @include tablet-only() {
+        background-image: linear-gradient(
+                to right,
+                rgba(0, 0, 0, 0.56),
+                rgba(0, 0, 0, 0.56)
+            ),
+            url(../images/main/header-main-tablet-bg.jpg);
+
+        @include retina {
+            background-image: linear-gradient(
+                    to right,
+                    rgba(0, 0, 0, 0.56),
+                    rgba(0, 0, 0, 0.56)
+                ),
+                url(../images/main/header-main-tablet-bg\ @2.jpg);
+        }
+    }
+
+    @include desktop() {
+        background-image: linear-gradient(
+                to right,
+                rgba(0, 0, 0, 0.56),
+                rgba(0, 0, 0, 0.56)
+            ),
+            url(../images/main/header-main-desktop-bg.jpg);
+
+        @include retina {
+            background-image: linear-gradient(
+                    to right,
+                    rgba(0, 0, 0, 0.56),
+                    rgba(0, 0, 0, 0.56)
+                ),
+                url(../images/main/header-main-desktop-bg\ @2.jpg);
+        }
+    }
+}
+
+.site-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 54px;
+
+    @include tablet() {
+        margin-bottom: 40px;
+    }
+}
+
+.logo-svg {
+    width: 24px;
+    height: 24px;
+    fill: rgba(255, 255, 255, 1);
+}
+
+.header__logo-text {
+    display: none;
+    color: rgba(255, 255, 255, 1);
+
+    @include tablet() {
+        display: inline-block;
+        font-weight: 500;
+        font-size: 30px;
+        line-height: 1.17;
+
+        margin-left: 8px;
+    }
+    @include desktop() {
+        margin-left: 10px;
+    }
+}
+
+.main-nav-list {
+    display: flex;
+    flex-direction: row;
+    column-gap: 40px;
+}
+
+.header__link {
+    position: relative;
+    margin-bottom: 2px;
+
+    text-align: center;
+    text-transform: uppercase;
+    @include font(500, 12px, 1.17);
+    color: rgba(255, 255, 255, 1);
+}
+
+.underline::after {
+    content: "";
+
+    position: absolute;
+    bottom: -2px;
+
+    display: block;
+    width: 100%;
+    height: 3px;
+
+    background-color: #ff001b;
+}
+
+.search-form {
+    position: relative;
+
+    margin-left: auto;
+    margin-right: auto;
+    // margin-bottom: 16px;
+
+    background-color: inherit;
+}
+
+input {
+    padding: 0;
+    min-width: 280px;
+    height: 20px;
+    border: none;
+    outline: none;
+    border-bottom: 1px solid #fff;
+
+    background-color: inherit;
+
+    @include font(400, 14px, 1.17);
+    color: rgba(255, 255, 255, 1);
+
+    @include tablet-only() {
+        min-width: 336px;
+    }
+    @include desktop() {
+        min-width: 394px;
+    }
+}
+
+input::placeholder {
+    color: rgba(255, 255, 255, 1);
+}
+
+.submit-btn {
+    position: absolute;
+    right: -15px;
+    top: -10px;
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+
+    width: 40px;
+    height: 40px;
+}
+
+.search-svg {
+    position: absolute;
+    right: 15px;
+    top: 12px;
+
+    width: 12px;
+    height: 12px;
+
+    fill: rgba(255, 255, 255, 1);
+}

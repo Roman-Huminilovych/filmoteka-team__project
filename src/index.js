@@ -1,52 +1,9 @@
-import { activatePagination } from "./js/pagination";
-import { createMarkup } from './js/renderGallery.js';
-
-createMarkup([
-  {
-    title: 'ababab',
-    genre_ids: 'qweqwe',
-    release_date: 2023,
-    vote_average: 8,
-  },
-  {
-    title: 'abasssb',
-    genre_ids: 'qweqwe',
-    release_date: 2023,
-    vote_average: 8,
-  },
-  {
-    title: 'ababdsdsdab',
-    genre_ids: 'qweqwe',
-    release_date: 2023,
-    vote_average: 8,
-  },
-  {
-    title: 'ababsdsab',
-    genre_ids: 'qweqwe',
-    release_date: 2023,
-    vote_average: 8,
-  },
-  {
-    title: 'ababab',
-    genre_ids: 'qweqwe',
-    release_date: 2023,
-    vote_average: 8,
-  },
-  {
-    title: 'ababab',
-    genre_ids: 'qweqwe',
-    release_date: 2023,
-    vote_average: 8,
-  },
-]);
-
-activatePagination({current: 15, pages: 50});
-
-
-
+import { renderTrending } from './js/render-trending';
+import { onSubmit } from './js/onSubmit';
+import { renderTrendingWithScroll } from './js/render-trending-mobile-scroll';
+import debounce from 'lodash.debounce';
 // import $ from 'jquery';
 // import 'slick-carousel';
-
 
 $('.carousel').slick({
   dots: true,
@@ -59,4 +16,37 @@ $('.carousel').slick({
   pauseOnHover: true,
   pauseOnDotsHover: true,
 });
+
+const refs = {
+  searchForm: document.querySelector('#search-form'),
+  searchInput: document.querySelector('[name="searchQuery"]'),
+  searchBtn: document.querySelector('.submit-btn'),
+};
+
+if (screen.width <= 768) {
+  renderTrendingWithScroll();
+} else {
+  renderTrending();
+}
+
+refs.searchInput.addEventListener('input', debounce(onInput, 300));
+refs.searchForm.addEventListener('submit', onSubmit);
+
+function onInput() {
+  if (this.value.trim()) {
+    refs.searchBtn.disabled = false;
+  } else {
+    refs.searchBtn.disabled = true;
+  }
+}
+
+
+
+
+
+
+
+
+
+
 

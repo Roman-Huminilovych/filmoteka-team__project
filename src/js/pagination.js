@@ -32,7 +32,6 @@ const paginationGenerator = (current, last, delta = 2) => {
         if (previous && page - previous !== 1) {            
             rangeWithDots.push({page: dots, current: false, dots: true});            
         }
-
         page === current ? rangeWithDots.push({page: page, current: true, dots: false}) : rangeWithDots.push({page: page, current: false, dots: false});
         previous = page;
     });
@@ -45,6 +44,7 @@ function renderPagination(current, pages) {
         refs.pagination.classList.add('visual-hidden');
         return;
     }
+    refs.pagination.classList.remove('visual-hidden');
     refs.pagesContainer.innerHTML = createPagination(paginationGenerator(current, pages));
     disableUnnecessaryArrows(current, pages);
 }

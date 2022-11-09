@@ -1,0 +1,132 @@
+.header {
+  background-color: rgba(0, 0, 0, 0.56);
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 40px;
+  padding-bottom: 62px;
+  background-size: cover;
+  background-position: center;
+  @include tablet() {
+    padding-bottom: 60px;
+  }
+}
+
+.header--library {
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.56),
+      rgba(0, 0, 0, 0.56)
+    ),
+    url("../images/library/header-lib-mobile-bg.jpg");
+
+  @include retina() {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url("../images/library/header-lib-mobile-bg @2.jpg");
+  }
+  @include tablet() {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url("../images/library/header-lib-tablet-bg.jpg");
+
+    @include retina() {
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url("../images/library/header-lib-tablet-bg @2.jpg");
+    }
+  }
+  @include desktop() {
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.56),
+        rgba(0, 0, 0, 0.56)
+      ),
+      url("../images/library/header-lib-desktop-bg.jpg");
+
+    @include retina() {
+      background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0.56),
+          rgba(0, 0, 0, 0.56)
+        ),
+        url("../images/library/header-lib-desktop-bg @2.jpg");
+    }
+  }
+}
+
+.header__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  color: var(--text-color-light);
+}
+
+.header__logo-text {
+  display: none;
+  margin-left: 10px;
+  @include tablet() {
+    display: inline-block;
+    @include font(500, 30px, 1.17);
+  }
+}
+
+.nav__link {
+  @include font(500, 12px, 1.167);
+  text-transform: uppercase;
+  color: var(--text-color-light);
+  transition: color var(--transition-prop);
+
+  &:hover,
+  &:focus {
+    color: var(--text-color-accent);
+  }
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+.nav__list {
+  display: flex;
+  gap: 39px;
+  @include tablet-only() {
+    gap: 40px;
+  }
+}
+
+.nav__link--active {
+  border-bottom: 3px solid var(--menu-line-color);
+}
+
+// LIBRARY BUTTON
+.library-cont {
+  margin-top: 60px;
+  display: flex;
+  gap: 20px;
+  @include tablet() {
+    gap: 32px;
+    margin-top: 40px;
+  }
+  @include desktop() {
+    gap: 16px;
+  }
+}
