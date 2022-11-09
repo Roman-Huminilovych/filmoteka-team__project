@@ -1,6 +1,6 @@
 //F15, F19
 import Notiflix from 'notiflix';
-import createMarkup from './renderGallery';
+//import createMarkup from './renderGallery';
 import renderTrending from './render-trending';
 
 
