@@ -3,11 +3,10 @@ import { getMovieById } from './get-movie-info';
 import modalFilm from '../templates/modalFilm.hbs';
 
 const backdrop = document.querySelector('.backdrop');
-const modal = document.querySelector('.modal');
+const modalBtn = document.querySelector('.modal-close-btn');
 const films = document.querySelector('.films');
 
 films.addEventListener('click', onOpenModal);
-
 export function onOpenModal(evt) {
   evt.preventDefault();
   console.log(evt);
@@ -19,6 +18,7 @@ export function onOpenModal(evt) {
       const movieInfo = await (await getMovieById(id)).data;
       console.log('movieInfo', movieInfo);
       backdrop.innerHTML = modalFilm(movieInfo.results);
+      renderModalFilm({ movieInfo });
     } catch (error) {
       console.log(error.message);
     }
@@ -28,7 +28,6 @@ export function onOpenModal(evt) {
   backdrop.classList.remove('is-hidden');
   const instance = basicLightbox.create(backdrop, {
     onShow: () => {
-      modal;
       document.addEventListener('keydown', onCloseModalEsc);
     },
     onClose: () => {
@@ -37,17 +36,24 @@ export function onOpenModal(evt) {
   });
   instance.show();
 
-  const modalBtn = document.querySelector('.modal-close-btn');
+  function onCloseModalEsc(evt) {
+    if (evt.code === 'Escape') {
+      instance.close();
+      backdrop.classList.add('is-hidden');
+    }
+  }
+
   modalBtn.addEventListener('click', onCloseModalBtn);
   function onCloseModalBtn(evt) {
     instance.close();
-    document.removeEventListener('click', onCloseModalBtn);
+    backdrop.classList.add('is-hidden');
   }
 
-  function onCloseModalEsc(evt) {
-    console.log(evt);
-    if (evt.code === 'Escape') {
+  backdrop.addEventListener('click', onCloseModalBack);
+  function onCloseModalBack(evt) {
+    if (evt.target === evt.currentTarget) {
       instance.close();
+      backdrop.classList.add('is-hidden');
     }
   }
 }
