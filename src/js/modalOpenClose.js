@@ -1,9 +1,9 @@
 import * as basicLightbox from 'basiclightbox';
 import { getMovieById } from './get-movie-info';
 import modalFilm from '../templates/modalFilm.hbs';
+import { makeGenres } from './secondary-functions/genres';
 
 const backdrop = document.querySelector('.backdrop');
-const modalBtn = document.querySelector('.modal-close-btn');
 const films = document.querySelector('.films');
 
 films.addEventListener('click', onOpenModal);
@@ -18,12 +18,21 @@ export function onOpenModal(evt) {
       const movieInfo = await (await getMovieById(id)).data;
       console.log('movieInfo', movieInfo);
       backdrop.innerHTML = modalFilm(movieInfo.results);
+      makeGenres({ ...movieInfo.genres });
       renderModalFilm({ movieInfo });
     } catch (error) {
       console.log(error.message);
     }
   }
-  onMovieClick();
+
+  onMovieClick().then(() => {
+    const modalBtn = document.querySelector('.modal .modal-close-btn');
+    modalBtn.addEventListener('click', onCloseModalBtn);
+    function onCloseModalBtn(evt) {
+      instance.close();
+      backdrop.classList.add('is-hidden');
+    }
+  });
 
   backdrop.classList.remove('is-hidden');
   const instance = basicLightbox.create(backdrop, {
@@ -41,12 +50,6 @@ export function onOpenModal(evt) {
       instance.close();
       backdrop.classList.add('is-hidden');
     }
-  }
-
-  modalBtn.addEventListener('click', onCloseModalBtn);
-  function onCloseModalBtn(evt) {
-    instance.close();
-    backdrop.classList.add('is-hidden');
   }
 
   backdrop.addEventListener('click', onCloseModalBack);

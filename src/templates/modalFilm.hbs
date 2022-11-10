@@ -1,10 +1,6 @@
 {{#each this}}
   <div class='modal' data-id='{{id}}'>
-    <button class='modal-close-btn'>
-      <svg class='close-icon' width='14' height='14'>
-        <use href='./images/symbol-defs.svg#icon-close'></use>
-      </svg>
-    </button>
+    <button class='modal-close-btn'>&#10005;</button>
     <div class='modal__wrapper-img'>
       <img
         class='modal__img'
@@ -14,7 +10,7 @@
       />
     </div>
     <div class='modal__info'>
-      <h3 class='modal__title'>{{title}}</h3>
+      <h3 class='modal__title' style='text-transform: uppercase'>{{title}}</h3>
       <div class='modal__attributes'>
         <p class='modal__attributes-name'>
           <span class='modal__attributes-title'>Vote / Votes</span>
@@ -28,11 +24,16 @@
         </p>
         <p class='modal__attributes-name'>
           <span class='modal__attributes-title'>Original Title</span>
-          <span class='modal__attributes-text'>{{original_title}}</span>
+          <span
+            class='modal__attributes-text'
+            style='text-transform: uppercase'
+          >{{original_title}}</span>
         </p>
         <p class='modal__attributes-name'>
           <span class='modal__attributes-title'>Genre</span>
-          <span class='modal__attributes-text'>{{genres.name}}</span>
+          <span class='modal__attributes-text'>{{#if genres}}{{#each
+                genres
+              }}{{name}} {{/each}}{{else}}No genre{{/if}}</span>
         </p>
       </div>
       <article class='modal__article'>
