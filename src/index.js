@@ -5,6 +5,8 @@ import debounce from 'lodash.debounce';
 // import $ from 'jquery';
 // import 'slick-carousel';
 
+import { onOpenModal, renderModalFilm } from './js/modalOpenClose';
+
 $('.carousel').slick({
   dots: true,
   arrows: false,

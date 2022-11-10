@@ -1,5 +1,5 @@
 {{#each this}}
-<li class='films__item'>
+<li class='films__item' data-id="{{id}}">
     <div class='films__img'>
         {{#if poster_path}}
         <img src='https://image.tmdb.org/t/p/w342{{poster_path}}' alt='Film "{{title}}" poster' loading='lazy' />
