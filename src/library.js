@@ -1,4 +1,5 @@
-import { queueMarkup, addMovieToQueue } from './js/queue-add-and-render';
+import { renderQueue} from './js/queue-render';
+import {renderWatched} from './js/watched-render'
 
-queueMarkup ();
-
+renderQueue();
+renderWatched();

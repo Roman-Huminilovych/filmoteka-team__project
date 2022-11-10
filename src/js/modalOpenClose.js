@@ -1,7 +1,8 @@
 import * as basicLightbox from 'basiclightbox';
 import { getMovieById } from './get-movie-info';
 import modalFilm from '../templates/modalFilm.hbs';
-import { makeGenres } from './secondary-functions/genres';
+import { addToQueueOnClick } from './queue-add'; 
+import { addToWatchedOnClick } from './watched-add';
 
 const backdrop = document.querySelector('.backdrop');
 const films = document.querySelector('.films');
@@ -14,9 +15,7 @@ export function onOpenModal(evt) {
   async function onMovieClick() {
     try {
       const movieInfo = await (await getMovieById(id)).data;
-      console.log('movieInfo', movieInfo);
       backdrop.innerHTML = modalFilm(movieInfo.results);
-      makeGenres({ ...movieInfo.genres });
       renderModalFilm({ movieInfo });
     } catch (error) {
       console.log(error.message);
@@ -25,20 +24,19 @@ export function onOpenModal(evt) {
 
   onMovieClick().then(() => {
     const modalBtn = document.querySelector('.modal .modal-close-btn');
-    modalBtn.addEventListener('click', onCloseModalBtn);
-    function onCloseModalBtn(evt) {
-      instance.close();
-      backdrop.classList.add('is-hidden');
-    }
-
+    const addToQueueBtn = document.querySelector('.modal__btn--queue');
+    const addToWatchedBtn = document.querySelector('.modal__btn--watched');
     modalBtn.addEventListener('click', closeModal);
+    addToQueueBtn.addEventListener('click', addToQueueOnClick);
+    addToWatchedBtn.addEventListener('click', addToWatchedOnClick); 
+
   });
 
   backdrop.classList.remove('is-hidden');
 
   const instance = basicLightbox.create(backdrop, {
     onShow: () => {
-      document.addEventListener('keydown', onCloseModalEsc);
+      document.addEventListener('keydown', onCloseModalEsc); 
     },
     onClose: () => {
       document.removeEventListener('keydown', onCloseModalEsc);
@@ -60,6 +58,12 @@ export function onOpenModal(evt) {
   }
 
   function closeModal() {
+    const addToQueueBtn = document.querySelector('.modal__btn--queue');
+    addToQueueBtn.removeEventListener('click', addToQueueOnClick); 
+
+    const addToWatchedBtn = document.querySelector('.modal__btn--watched');
+    addToWatchedBtn.removeEventListener('click', addToWatchedOnClick);
+
     instance.close();
     backdrop.classList.add('is-hidden');
   }
@@ -67,4 +71,9 @@ export function onOpenModal(evt) {
 
 function renderModalFilm(film) {
   backdrop.innerHTML = modalFilm(film);
+  const votes = document.querySelector('.modal__attributes-vote');
+  const popularity = document.querySelector('.modal__attributes-text--popular');
+  votes.textContent = votes.textContent % 1 === 0 ? votes.textContent : (+votes.textContent).toFixed(1);
+  popularity.textContent = popularity.textContent % 1 === 0 ? popularity.textContent : (+popularity.textContent).toFixed(1);
+
 }
