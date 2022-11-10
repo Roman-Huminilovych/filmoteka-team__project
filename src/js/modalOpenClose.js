@@ -9,9 +9,7 @@ const films = document.querySelector('.films');
 films.addEventListener('click', onOpenModal);
 export function onOpenModal(evt) {
   evt.preventDefault();
-  // console.log(evt);
   const currentItem = evt.target.closest('li');
-  // console.log(currentItem);
   let id = +currentItem.dataset.id;
   async function onMovieClick() {
     try {
