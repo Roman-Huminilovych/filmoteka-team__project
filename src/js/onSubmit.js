@@ -4,6 +4,7 @@ import { getMovies } from './get-movies';
 import { createMarkup } from './render-searchQuery';
 import { getPageFromPagination } from './secondary-functions/get-page-from-pagination';
 import Notiflix from 'notiflix';
+import { spinner } from './spinner';
 
 Notiflix.Notify.init({
   width: '280px',
@@ -35,6 +36,7 @@ export async function onSubmit(e) {
   resetRequest();
 
   try {
+    spinner();
     const getFetchMovieResponse = await getMovies(PATH, page, query);
     const moviesArray = await getFetchMovieResponse.data.results;
     createMarkup(moviesArray);
@@ -56,6 +58,7 @@ export async function onSubmit(e) {
         refs.pagination.addEventListener('click', renderSearchPages);
       }
     }
+    spinner();
   } catch (error) {
     Notiflix.Notify.failure(`Something is wrong. ${error.message}`);
   }
