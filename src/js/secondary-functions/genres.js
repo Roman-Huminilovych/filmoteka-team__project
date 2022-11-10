@@ -7,17 +7,24 @@ export async function makeGenres(selector, page) {
   const genres = await (await getMovies(path)).data.genres;
 
   genreFields.forEach((item, idx) => {
-    if (!page) {
+    item.textContent = item.textContent.replace(/\n\s+/g, '');
+
+    if (item.textContent && !page) {
       item.textContent = getGenreFromId(item.textContent, genres);
     }
     // обрабатывает только новые карточки
-    if (idx >= (page - 1) * 20) {
+    else if (item.textContent && idx >= (page - 1) * 20) {
       item.textContent = getGenreFromId(item.textContent, genres);
+    }
+    // если приходит пустой массив жанров
+    else {
+      item.textContent = 'No genre';
     }
   });
 }
 
 function getGenreFromId(id, genres) {
+
   const arrOfIds = id.split(',');
   const arrOfGenres = [];
 
@@ -29,7 +36,8 @@ function getGenreFromId(id, genres) {
   arrOfIds.forEach(i => {
     if (i === 'Other') {
       arrOfGenres.push(i);
-    } else {
+    }
+    else {
       i && arrOfGenres.push(genres.find(genre => genre.id === +i).name);
     }
   });
