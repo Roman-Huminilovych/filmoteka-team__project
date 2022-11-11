@@ -41,6 +41,7 @@ export function onOpenModal(evt) {
       removeBtn.addEventListener('click', deleteFromQueue);
       removeBtn.addEventListener('click', closeModal);
       addToWatchedBtn.addEventListener('click', addToWatchedOnClick);
+      addToWatchedBtn.addEventListener('click', closeModal);
       
     }
     else {
