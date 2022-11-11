@@ -1,6 +1,7 @@
 //F15, F19
 import Notiflix from 'notiflix';
 import { getMovies } from './get-movies';
+import { watchedList } from './watched-add';
 
 
 //список фильмов для рендера странички
@@ -13,10 +14,23 @@ export async function addToQueueOnClick (e) {
     const path = `/movie/${movieId}`;
     const movie = await (await getMovies(path)).data;
     movie.genre_ids = movie.genres.map(genre => genre.id);
+    const messageInQueue = `"${movie.title}" is already added to the queue.`;
+    const messageWatched = `You have already watched ${movie.title}.`;
+    const messageAddedtoQueue = `${movie.title} was added to the queue.`
 
-    !queueList.find(item => item.id === +movieId) ? queueList.push(movie) : Notiflix.Notify.warning(`"${movie.title}" is already added to the queue`);
-
-    localStorage.setItem('queueList', JSON.stringify(queueList));
+    // проверка на наличие в очереди
+    if(queueList.find(item => item.id === +movieId)) {
+        return Notiflix.Notify.warning(messageInQueue);
+    }
+    // проверка в просмотренных
+    else if (watchedList.find(item => item.id === +movieId)) {
+        return Notiflix.Notify.warning(messageWatched);
+    }
+    else {    
+        queueList.push(movie);
+        Notiflix.Notify.info(messageAddedtoQueue);
+        localStorage.setItem('queueList', JSON.stringify(queueList));
+    }
 }
 
 

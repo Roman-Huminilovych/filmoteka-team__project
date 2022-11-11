@@ -3,6 +3,7 @@ import { getMovieById } from './get-movie-info';
 import modalFilm from '../templates/modalFilm.hbs';
 import { addToQueueOnClick } from './queue-add'; 
 import { addToWatchedOnClick } from './watched-add';
+import { createMarkup } from './render-searchQuery';
 
 const backdrop = document.querySelector('.backdrop');
 const films = document.querySelector('.films');
@@ -23,12 +24,31 @@ export function onOpenModal(evt) {
   }
 
   onMovieClick().then(() => {
-    const modalBtn = document.querySelector('.modal .modal-close-btn');
+    const modalCloseBtn = document.querySelector('.modal .modal-close-btn');
     const addToQueueBtn = document.querySelector('.modal__btn--queue');
     const addToWatchedBtn = document.querySelector('.modal__btn--watched');
-    modalBtn.addEventListener('click', closeModal);
-    addToQueueBtn.addEventListener('click', addToQueueOnClick);
-    addToWatchedBtn.addEventListener('click', addToWatchedOnClick); 
+    const removeBtn = document.querySelector('.modal__btn--queue-remove');
+
+    modalCloseBtn.addEventListener('click', closeModal);
+    
+    if(document.querySelector('#watched-btn.active')){
+      const buttonList = document.querySelector('.library-cont');
+      buttonList.style.display = 'none';
+    }
+    else if (document.querySelector('#queue-btn.active')) {
+      addToQueueBtn.style.display = 'none';
+      
+      removeBtn.addEventListener('click', deleteFromQueue);
+      removeBtn.addEventListener('click', closeModal);
+      addToWatchedBtn.addEventListener('click', addToWatchedOnClick);
+      
+    }
+    else {
+      removeBtn.style.display = 'none';
+
+      addToQueueBtn.addEventListener('click', addToQueueOnClick);
+      addToWatchedBtn.addEventListener('click', addToWatchedOnClick); 
+    }
 
   });
 
@@ -37,6 +57,7 @@ export function onOpenModal(evt) {
   const instance = basicLightbox.create(backdrop, {
     onShow: () => {
       document.addEventListener('keydown', onCloseModalEsc); 
+
     },
     onClose: () => {
       document.removeEventListener('keydown', onCloseModalEsc);
@@ -60,7 +81,6 @@ export function onOpenModal(evt) {
   function closeModal() {
     const addToQueueBtn = document.querySelector('.modal__btn--queue');
     addToQueueBtn.removeEventListener('click', addToQueueOnClick); 
-
     const addToWatchedBtn = document.querySelector('.modal__btn--watched');
     addToWatchedBtn.removeEventListener('click', addToWatchedOnClick);
 
@@ -69,11 +89,18 @@ export function onOpenModal(evt) {
   }
 }
 
+function deleteFromQueue(evt) {
+  const id = +evt.target.dataset.id;
+  let queueList = JSON.parse(localStorage.getItem("queueList"));
+  queueList = queueList.filter(item => item.id !== id);
+  localStorage.setItem('queueList', JSON.stringify(queueList));
+  createMarkup(queueList);
+}
+
 function renderModalFilm(film) {
   backdrop.innerHTML = modalFilm(film);
   const votes = document.querySelector('.modal__attributes-vote');
   const popularity = document.querySelector('.modal__attributes-text--popular');
   votes.textContent = votes.textContent % 1 === 0 ? votes.textContent : (+votes.textContent).toFixed(1);
   popularity.textContent = popularity.textContent % 1 === 0 ? popularity.textContent : (+popularity.textContent).toFixed(1);
-
 }

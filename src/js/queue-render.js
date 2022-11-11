@@ -2,10 +2,12 @@ import {createMarkup} from './render-searchQuery';
 const container = document.querySelector('.films');
 //кнопка "QUEUE" на странице библиотеки
 const renderQueueBtn = document.querySelector('button#queue-btn'); 
-const renderWatchedBtn = document.querySelector('button#watched-btn'); 
-const queueList = JSON.parse(localStorage.getItem("queueList"));
+const renderWatchedBtn = document.querySelector('button#watched-btn');
+
+
 
 export function renderQueue() {
+    queueMarkup()
     renderQueueBtn.addEventListener('click', queueMarkup);
     renderQueueBtn.addEventListener('click', toggleActiveBtns);
 }
@@ -17,12 +19,12 @@ function toggleActiveBtns() {
     renderWatchedBtn.disabled = false;
 }
 
-function queueMarkup (evt) {
+function queueMarkup () {
     container.innerHTML = '';
+    const queueList = JSON.parse(localStorage.getItem("queueList"));
 
     //ЗДЕСЬ МОЖНО ВСТАВИТЬ ФУНКЦИЮ СПИННЕРА, ПОКА РЕНДЕРИТСЯ РАЗМЕТКА
 
-    // const queueList = JSON.parse(localStorage.getItem("queueList"));
     if(!queueList) {
         Notiflix.Notify.info('Your queue is empty. You can add movies to queue on main page.');
         return;
