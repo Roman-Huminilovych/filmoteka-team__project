@@ -7,7 +7,7 @@ import { createMarkup } from './render-searchQuery';
 
 const backdrop = document.querySelector('.backdrop');
 
-export function onOpenModal(evt) {
+export async function onOpenModal(evt) {
   evt.preventDefault();
   const currentItem = evt.target.closest('li');
   let id = +currentItem.dataset.id;
