@@ -1,4 +1,4 @@
-import { createMarkup } from "../render-searchQuery";
+import { createMarkup } from "../render-search-query";
 
 export function deleteFromQueue(evt) {
     const id = +evt.target.dataset.id;

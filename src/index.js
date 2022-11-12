@@ -1,8 +1,7 @@
-import { renderTrending } from './js/render-trending';
+import { renderTrending } from './js/trending/render-trending';
 import { onSubmit } from './js/onSubmit';
-import { renderTrendingWithScroll } from './js/render-trending-mobile-scroll';
 import debounce from 'lodash.debounce';
-import { onOpenModal } from './js/modalOpenClose';
+import { onMovieCardClick } from './js/modal-movie-info';
 
 $('.carousel').slick({
   dots: true,
@@ -23,15 +22,11 @@ const refs = {
   films: document.querySelector('.films'),
 };
 
-if (screen.width <= 768) {
-  renderTrendingWithScroll();
-} else {
-  renderTrending();
-}
+renderTrending();
 
 refs.searchInput.addEventListener('input', debounce(onInput, 300));
 refs.searchForm.addEventListener('submit', onSubmit);
-refs.films.addEventListener('click', onOpenModal);
+refs.films.addEventListener('click', onMovieCardClick);
 
 function onInput() {
   if (this.value.trim()) {

@@ -1,7 +1,7 @@
-import { getMovies } from './get-movies';
-import makeCard from '../templates/card-template-homepage.hbs';
-import { makeGenres } from './secondary-functions/genres';
-import { makeYears } from './secondary-functions/year';
+import { getMovies } from '../fetch-functions/get-movies';
+import makeCard from '../../templates/card-template-homepage.hbs';
+import { makeGenres } from '../secondary-functions/genres';
+import { makeYears } from '../secondary-functions/year';
 
 const refs = {
   container: document.querySelector('.films'),

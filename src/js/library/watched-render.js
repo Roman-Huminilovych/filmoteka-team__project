@@ -1,4 +1,4 @@
-import {createMarkup} from './render-searchQuery';
+import { createMarkup } from "../render-search-query";
 import Notiflix from 'notiflix';
 const container = document.querySelector('.films'); 
 //кнопка "QUEUE" на странице библиотеки
@@ -30,4 +30,4 @@ function watchedMarkup () {
     }
 
     return createMarkup(watchedList);
-}
+} 

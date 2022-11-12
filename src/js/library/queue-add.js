@@ -1,5 +1,5 @@
 import Notiflix from 'notiflix';
-import { getMovies } from './get-movies';
+import { getMovies } from '../fetch-functions/get-movies';
 import { watchedList } from './watched-add';
 
 //список фильмов для рендера странички

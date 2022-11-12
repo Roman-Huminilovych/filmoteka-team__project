@@ -1,4 +1,4 @@
-import { getMovies } from '../get-movies';
+import { getMovies } from '../fetch-functions/get-movies';
 
 export async function makeGenres(selector, page) {
   const genreFields = document.querySelectorAll(selector);

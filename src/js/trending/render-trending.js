@@ -1,11 +1,12 @@
-import { getMovies } from './get-movies';
-import { renderSearchPages } from './onSubmit';
-import makeCard from '../templates/card-template-homepage.hbs';
-import { activatePagination } from './pagination';
-import { getPageFromPagination } from './secondary-functions/get-page-from-pagination';
-import { makeGenres } from './secondary-functions/genres';
-import { makeYears } from './secondary-functions/year';
-import { spinner } from './spinner';
+import { renderTrendingWithScroll } from './render-trending-mobile-scroll';
+import { getMovies } from '../fetch-functions/get-movies';
+import { renderSearchPages } from '../onSubmit';
+import makeCard from '../../templates/card-template-homepage.hbs';
+import { activatePagination } from '../pagination';
+import { getPageFromPagination } from '../secondary-functions/get-page-from-pagination';
+import { makeGenres } from '../secondary-functions/genres';
+import { makeYears } from '../secondary-functions/year';
+import { spinner } from '../spinner';
 
 const refs = {
   container: document.querySelector('.films'),
@@ -16,7 +17,15 @@ const path = 'trending/movie/day';
 let page = 1;
 let trending = null;
 
-export async function renderTrending() {
+export function renderTrending() {
+  if (screen.width <= 768) {
+    renderTrendingWithScroll();
+  } else {
+    renderTrendingPages();
+  }
+}
+
+async function renderTrendingPages() {
   spinner();
   await renderMarkup();
 

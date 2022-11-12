@@ -1,8 +1,6 @@
-import { addToQueueOnClick } from '../queue-add';
-import { addToWatchedOnClick } from '../watched-add';
-import { deleteFromQueue } from '../secondary-functions/delete-from-queue';
-
-
+import { addToQueueOnClick } from '../library/queue-add';
+import { addToWatchedOnClick } from '../library/watched-add';
+import { deleteFromQueue } from './delete-from-queue';
 
 export function activateModalBtns() {
     const refs = {

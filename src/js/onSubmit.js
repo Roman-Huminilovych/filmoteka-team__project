@@ -1,7 +1,7 @@
 import { activatePagination } from './pagination';
-import { renderPages } from './render-trending';
-import { getMovies } from './get-movies';
-import { createMarkup } from './render-searchQuery';
+import { renderPages } from './trending/render-trending';
+import { getMovies } from './fetch-functions/get-movies';
+import { createMarkup } from './render-search-query';
 import { getPageFromPagination } from './secondary-functions/get-page-from-pagination';
 import Notiflix from 'notiflix';
 import { spinner } from './spinner';
