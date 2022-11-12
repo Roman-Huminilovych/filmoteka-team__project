@@ -1,7 +1,7 @@
-import { getMovies } from './get-movies';
-import makeCard from '../templates/card-template-homepage.hbs';
-import { makeGenres } from './secondary-functions/genres';
-import { makeYears } from './secondary-functions/year';
+import { getMovies } from '../fetch-functions/get-movies';
+import makeCard from '../../templates/card-template-homepage.hbs';
+import { makeGenres } from '../secondary-functions/genres';
+import { makeYears } from '../secondary-functions/year';
 
 const refs = {
   container: document.querySelector('.films'),
@@ -16,7 +16,6 @@ const options = {
 };
 
 const observer = new IntersectionObserver(renderNextPages, options);
-
 const path = 'trending/movie/day';
 let page = 1;
 let trending = null;

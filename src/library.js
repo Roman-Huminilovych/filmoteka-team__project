@@ -1,6 +1,6 @@
-import { renderQueue } from './js/queue-render';
-import { renderWatched } from './js/watched-render';
-import { onOpenModal } from './js/modalOpenClose';
+import { renderQueue } from './js/library/queue-render';
+import { renderWatched } from './js/library/watched-render';
+import { onMovieCardClick } from './js/modal-movie-info';
 
 renderQueue();
 renderWatched();
@@ -21,4 +21,4 @@ const refs = {
   films: document.querySelector('.films'),
 };
 
-refs.films.addEventListener('click', onOpenModal);
+refs.films.addEventListener('click', onMovieCardClick);

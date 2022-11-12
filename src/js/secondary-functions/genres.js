@@ -1,12 +1,13 @@
-import { getMovies } from '../get-movies';
+import { getMovies } from '../fetch-functions/get-movies';
 
 export async function makeGenres(selector, page) {
   const genreFields = document.querySelectorAll(selector);
-
+  // console.log(genreFields);
   const path = 'genre/movie/list';
   const genres = await (await getMovies(path)).data.genres;
-
+  // console.log(genres);
   genreFields.forEach((item, idx) => {
+    // console.log(item.textContent);
     item.textContent = item.textContent.replace(/\n\s+/g, '');
 
     if (item.textContent && !page) {
@@ -24,7 +25,6 @@ export async function makeGenres(selector, page) {
 }
 
 function getGenreFromId(id, genres) {
-
   const arrOfIds = id.split(',');
   const arrOfGenres = [];
 
@@ -36,8 +36,7 @@ function getGenreFromId(id, genres) {
   arrOfIds.forEach(i => {
     if (i === 'Other') {
       arrOfGenres.push(i);
-    }
-    else {
+    } else {
       i && arrOfGenres.push(genres.find(genre => genre.id === +i).name);
     }
   });

@@ -1,16 +1,24 @@
-import { activatePagination } from './pagination';
-import { renderPages } from './render-trending';
-import { getMovies } from './get-movies';
-import { createMarkup } from './render-searchQuery';
-import { getPageFromPagination } from './secondary-functions/get-page-from-pagination';
+import { activatePagination } from '../pagination';
+import { renderPages } from '../trending/render-trending';
+import { getMovies } from '../fetch-functions/get-movies';
+import { createMarkup } from './render-search-query';
+import { getPageFromPagination } from '../secondary-functions/get-page-from-pagination';
+import { renderSearchingWithScroll } from './render-searching-mobile-scroll';
 import Notiflix from 'notiflix';
-import { spinner } from './spinner';
+import { spinner } from '../spinner';
 
-Notiflix.Notify.init({
-  width: '280px',
-  position: 'center-top',
-  distance: '150px',
-});
+if (screen.width < 768) {
+  Notiflix.Notify.init({
+    width: '280px',
+    position: 'center',
+    distance: '20px',
+  });
+} else {
+  Notiflix.Notify.init({
+    position: 'center-top',
+    distance: '150px',
+  });
+}
 
 const refs = {
   searchInput: document.querySelector('[name="searchQuery"]'),
@@ -40,7 +48,7 @@ export async function onSubmit(e) {
     spinner();
     const getFetchMovieResponse = await getMovies(PATH, page, query);
     const moviesArray = await getFetchMovieResponse.data.results;
-    createMarkup(moviesArray);
+    createMarkup(moviesArray, page);
 
     if (!moviesArray.length) {
       refs.pagination.classList.add('visual-hidden');
@@ -48,20 +56,26 @@ export async function onSubmit(e) {
       return Notiflix.Notify.failure(
         'Search result not successful. Enter the correct movie name and try againe.'
       );
-    } else {
-      Notiflix.Notify.success(
-        `Hooray! We found ${getFetchMovieResponse.data.total_results} movies.`
-      );
+    }
 
-      if (getFetchMovieResponse.data.total_pages > 1) {
-        pages = getFetchMovieResponse.data.total_pages;
+    Notiflix.Notify.success(
+      `Hooray! We found ${getFetchMovieResponse.data.total_results} movies.`
+    );
+
+    if (getFetchMovieResponse.data.total_pages > 1) {
+      pages = getFetchMovieResponse.data.total_pages;
+
+      if (screen.width < 768) {
+        renderSearchingWithScroll(PATH, page, query);
+      } else {
         activatePagination({ current: 1, pages });
         refs.pagination.removeEventListener('click', renderPages);
         refs.pagination.addEventListener('click', renderSearchPages);
-      } else {
-        refs.pagination.classList.add('visual-hidden');
       }
+    } else {
+      refs.pagination.classList.add('visual-hidden');
     }
+
     spinner();
   } catch (error) {
     Notiflix.Notify.failure(`Something is wrong. ${error.message}`);
@@ -79,5 +93,5 @@ export function renderSearchPages(e) {
 async function getSearchFetch() {
   const getFetchMovieResponse = await getMovies(PATH, page, query);
   const moviesArray = await getFetchMovieResponse.data.results;
-  createMarkup(moviesArray);
+  createMarkup(moviesArray, page);
 }

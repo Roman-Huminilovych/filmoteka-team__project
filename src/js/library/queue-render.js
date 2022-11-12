@@ -1,4 +1,4 @@
-import { createMarkup } from './render-searchQuery';
+import { createMarkup } from '../search/render-search-query';
 import Notiflix from 'notiflix';
 
 const container = document.querySelector('.films');

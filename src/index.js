@@ -1,8 +1,8 @@
-import { renderTrending } from './js/render-trending';
-import { onSubmit } from './js/onSubmit';
-import { renderTrendingWithScroll } from './js/render-trending-mobile-scroll';
+import { renderTrending } from './js/trending/render-trending';
+import { onSubmit } from './js/search/onSubmit';
+import { chekInputQuery } from './js/search/chekInputQuery';
 import debounce from 'lodash.debounce';
-import { onOpenModal } from './js/modalOpenClose';
+import { onMovieCardClick } from './js/modal-movie-info';
 
 $('.carousel').slick({
   dots: true,
@@ -19,24 +19,11 @@ $('.carousel').slick({
 const refs = {
   searchForm: document.querySelector('#search-form'),
   searchInput: document.querySelector('[name="searchQuery"]'),
-  searchBtn: document.querySelector('.submit-btn'),
   films: document.querySelector('.films'),
 };
 
-if (screen.width <= 768) {
-  renderTrendingWithScroll();
-} else {
-  renderTrending();
-}
+renderTrending();
 
-refs.searchInput.addEventListener('input', debounce(onInput, 300));
+refs.searchInput.addEventListener('input', debounce(chekInputQuery, 300));
 refs.searchForm.addEventListener('submit', onSubmit);
-refs.films.addEventListener('click', onOpenModal);
-
-function onInput() {
-  if (this.value.trim()) {
-    refs.searchBtn.disabled = false;
-  } else {
-    refs.searchBtn.disabled = true;
-  }
-}
+refs.films.addEventListener('click', onMovieCardClick);

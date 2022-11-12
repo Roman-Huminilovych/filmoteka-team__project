@@ -76,3 +76,7 @@ a {
 .no-scroll {
     overflow: hidden;
 }
+
+.backdrop {
+    backdrop-filter: saturate(0.8) brightness(0.9);
+}
