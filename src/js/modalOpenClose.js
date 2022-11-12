@@ -15,7 +15,7 @@ export async function onOpenModal(evt) {
     try {
       document.querySelector('body').classList.add('modal-open');
       const movieInfo = await (await getMovieById(id)).data;
-      backdrop.innerHTML = modalFilm(movieInfo.results);
+      // backdrop.innerHTML = modalFilm(movieInfo.results);
       renderModalFilm({ movieInfo });
     } catch (error) {
       console.log(error.message);
