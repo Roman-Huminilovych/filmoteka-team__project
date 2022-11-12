@@ -15,28 +15,26 @@ const options = {
   treshhold: 0,
 };
 
-const observer = new IntersectionObserver(renderNextPages, options);
-const path = 'trending/movie/day';
-let page = 1;
-let trending = null;
+const srchObserver = new IntersectionObserver(renderNextPages, options);
 
-export async function renderTrendingWithScroll() {
-  await renderMarkup();
-  observer.observe(refs.guard);
+export async function renderSearchingWithScroll(path, page, query) {
+  console.log(`path ${path} \n`, `page  ${page} \n`, `query  ${query} \n`);
+  await renderMarkup(path, page, query);
+  srchObserver.observe(refs.guard);
 }
 
 function renderNextPages(entries) {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       page += 1;
-      renderMarkup();
+      renderMarkup(path, page, query);
     }
   });
 }
 
-async function renderMarkup() {
-  trending = await (await getMovies(path, page)).data;
-  refs.container.insertAdjacentHTML('beforeend', makeCard(trending.results));
-  makeYears('.films__date', page);
-  makeGenres('.films__genre', page);
+async function renderMarkup(path, page, query) {
+  const searching = await (await getMovies(path, page, query)).data;
+  refs.container.insertAdjacentHTML('beforeend', makeCard(searching.results));
+  makeYears('.films__date');
+  makeGenres('.films__genre');
 }

@@ -1,6 +1,6 @@
 import { renderTrendingWithScroll } from './render-trending-mobile-scroll';
 import { getMovies } from '../fetch-functions/get-movies';
-import { renderSearchPages } from '../onSubmit';
+import { renderSearchPages } from '../search/onSubmit';
 import makeCard from '../../templates/card-template-homepage.hbs';
 import { activatePagination } from '../pagination';
 import { getPageFromPagination } from '../secondary-functions/get-page-from-pagination';
@@ -18,7 +18,7 @@ let page = 1;
 let trending = null;
 
 export function renderTrending() {
-  if (screen.width <= 768) {
+  if (screen.width < 768) {
     renderTrendingWithScroll();
   } else {
     renderTrendingPages();
@@ -52,6 +52,6 @@ async function renderMarkup() {
   trending = await (await getMovies(path, page)).data;
   refs.container.innerHTML = makeCard(trending.results);
 
-  await makeGenres('.films__genre');
+  makeGenres('.films__genre');
   makeYears('.films__date');
 }

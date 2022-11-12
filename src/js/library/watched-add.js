@@ -1,6 +1,6 @@
 import Notiflix from 'notiflix';
 import { getMovies } from '../fetch-functions/get-movies';
-import { createMarkup } from '../render-search-query';
+import { createMarkup } from '../search/render-search-query';
 
 //список фильмов для рендера странички
 export const watchedList =
