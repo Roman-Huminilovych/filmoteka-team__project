@@ -20,7 +20,7 @@ export function activateModalBtns() {
 
     // для страницы "просмотренные"
     if (document.querySelector('#watched-btn.active')) {
-        const buttonList = document.querySelector('.library-cont');
+        const buttonList = document.querySelector('.modal__list-btn');
         buttonList.style.display = 'none';
     } 
     // для страницы очереди
