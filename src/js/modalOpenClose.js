@@ -1,97 +1,90 @@
-import * as basicLightbox from 'basiclightbox';
 import { getMovieById } from './get-movie-info';
 import modalFilm from '../templates/modalFilm.hbs';
 import { addToQueueOnClick } from './queue-add';
 import { addToWatchedOnClick } from './watched-add';
-import { createMarkup } from './render-searchQuery';
+import { deleteFromQueue } from './secondary-functions/delete-from-queue';
 
-const backdrop = document.querySelector('.backdrop');
+const backdrop = document.querySelector('.backdrop__movie-info');
 
 export async function onOpenModal(evt) {
   evt.preventDefault();
   const currentItem = evt.target.closest('li');
   let id = +currentItem.dataset.id;
-  async function onMovieClick() {
+  
+  async function createModal() {
     try {
       document.querySelector('body').classList.add('modal-open');
+
       const movieInfo = await (await getMovieById(id)).data;
-      backdrop.innerHTML = modalFilm(movieInfo.results);
       renderModalFilm({ movieInfo });
-    } catch (error) {
+      backdrop.classList.remove('is-hidden');    
+    } 
+    catch (error) {
       console.log(error.message);
     }
   }
 
-  onMovieClick().then(() => {
+  // добавление слушателей после создания модального окна
+  createModal().then(() => {
     const modalCloseBtn = document.querySelector('.modal .modal-close-btn');
     const addToQueueBtn = document.querySelector('.modal__btn--queue');
     const addToWatchedBtn = document.querySelector('.modal__btn--watched');
     const removeBtn = document.querySelector('.modal__btn--queue-remove');
-
+    
+    document.addEventListener('keydown', onCloseModalEsc);
+    // закрывает модальное окно по клику вне модального окна
+    backdrop.addEventListener('click', onCloseModalBack); 
     modalCloseBtn.addEventListener('click', closeModal);
 
+    // для страницы "просмотренные"
     if (document.querySelector('#watched-btn.active')) {
       const buttonList = document.querySelector('.library-cont');
       buttonList.style.display = 'none';
-    } else if (document.querySelector('#queue-btn.active')) {
+    } 
+    // для страницы очереди
+    else if (document.querySelector('#queue-btn.active')) {
       addToQueueBtn.style.display = 'none';
 
       removeBtn.addEventListener('click', deleteFromQueue);
       removeBtn.addEventListener('click', closeModal);
       addToWatchedBtn.addEventListener('click', addToWatchedOnClick);
       addToWatchedBtn.addEventListener('click', closeModal);
-    } else {
+    } 
+    // для домашней страницы
+    else {
       removeBtn.style.display = 'none';
 
       addToQueueBtn.addEventListener('click', addToQueueOnClick);
       addToWatchedBtn.addEventListener('click', addToWatchedOnClick);
     }
-  });
+  })
+  .catch((error) => console.log(error.message));
+}
 
-  backdrop.classList.remove('is-hidden');
-
-  const instance = basicLightbox.create(backdrop, {
-    onShow: () => {
-      document.addEventListener('keydown', onCloseModalEsc);
-    },
-    onClose: () => {
-      document.removeEventListener('keydown', onCloseModalEsc);
-    },
-  });
-  instance.show();
-
-  function onCloseModalEsc(evt) {
+function onCloseModalEsc(evt) {
     if (evt.code === 'Escape') {
       closeModal();
     }
   }
 
-  backdrop.addEventListener('click', onCloseModalBack);
-  function onCloseModalBack(evt) {
+function onCloseModalBack(evt) {
     if (evt.target === evt.currentTarget) {
       closeModal();
     }
   }
 
-  function closeModal() {
-    const addToQueueBtn = document.querySelector('.modal__btn--queue');
-    addToQueueBtn.removeEventListener('click', addToQueueOnClick);
-    const addToWatchedBtn = document.querySelector('.modal__btn--watched');
-    addToWatchedBtn.removeEventListener('click', addToWatchedOnClick);
+function closeModal() {
+  const addToQueueBtn = document.querySelector('.modal__btn--queue');
+  addToQueueBtn.removeEventListener('click', addToQueueOnClick);
+  const addToWatchedBtn = document.querySelector('.modal__btn--watched');
+  addToWatchedBtn.removeEventListener('click', addToWatchedOnClick);
 
-    instance.close();
-    backdrop.classList.add('is-hidden');
-    document.querySelector('body').classList.remove('modal-open');
-  }
+  backdrop.classList.add('is-hidden');
+  document.querySelector('body').classList.remove('modal-open');
+  document.removeEventListener('keydown', onCloseModalEsc);
 }
 
-function deleteFromQueue(evt) {
-  const id = +evt.target.dataset.id;
-  let queueList = JSON.parse(localStorage.getItem('queueList'));
-  queueList = queueList.filter(item => item.id !== id);
-  localStorage.setItem('queueList', JSON.stringify(queueList));
-  createMarkup(queueList);
-}
+
 
 function renderModalFilm(film) {
   backdrop.innerHTML = modalFilm(film);
