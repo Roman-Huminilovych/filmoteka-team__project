@@ -1,5 +1,5 @@
-import makeCard from '../templates/card-template.hbs';
 import { activatePagination } from './pagination';
+import { renderPages } from './render-trending';
 import { getMovies } from './get-movies';
 import { createMarkup } from './render-searchQuery';
 import { getPageFromPagination } from './secondary-functions/get-page-from-pagination';
@@ -21,6 +21,7 @@ const refs = {
 
 const PATH = '/search/movie';
 let page = 1;
+let pages = 1;
 let query = '';
 
 function resetRequest() {
@@ -43,6 +44,7 @@ export async function onSubmit(e) {
 
     if (!moviesArray.length) {
       refs.pagination.classList.add('visual-hidden');
+      spinner();
       return Notiflix.Notify.failure(
         'Search result not successful. Enter the correct movie name and try againe.'
       );
@@ -52,10 +54,12 @@ export async function onSubmit(e) {
       );
 
       if (getFetchMovieResponse.data.total_pages > 1) {
-        const pages = getFetchMovieResponse.data.total_pages;
-
+        pages = getFetchMovieResponse.data.total_pages;
         activatePagination({ current: 1, pages });
+        refs.pagination.removeEventListener('click', renderPages);
         refs.pagination.addEventListener('click', renderSearchPages);
+      } else {
+        refs.pagination.classList.add('visual-hidden');
       }
     }
     spinner();
@@ -64,7 +68,7 @@ export async function onSubmit(e) {
   }
 }
 
-function renderSearchPages(e) {
+export function renderSearchPages(e) {
   if (!getPageFromPagination(e.target, page)) {
     return;
   }

@@ -20,7 +20,7 @@
         </p>
         <p class='modal__attributes-name'>
           <span class='modal__attributes-title'>Popularity</span>
-          <span class='modal__attributes-text'>{{popularity}}</span>
+          <span class=' modal__attributes-text modal__attributes-text--popular'>{{popularity}}</span>
         </p>
         <p class='modal__attributes-name'>
           <span class='modal__attributes-title'>Original Title</span>
@@ -31,10 +31,8 @@
         </p>
         <p class='modal__attributes-name'>
           <span class='modal__attributes-title'>Genre</span>
-          <span class='modal__attributes-text'>{{#if genres}}{{#each
-                genres
-              }}{{name}} {{/each}}{{else}}No genre{{/if}}</span>
-          <span class='modal__attributes-text'>{{#if genres}}{{#each genres}}{{name}} {{/each}}{{else}}No genre{{/if}}</span>
+          <span class='modal__attributes-text'>{{#if genres}}
+            {{#each genres}}{{name}} {{/each}}{{else}}No genre{{/if}}</span>
         </p>
       </div>
       <article class='modal__article'>
@@ -44,10 +42,13 @@
       </article>
       <ul class='modal__list-btn'>
         <li class='modal__item-btn'>
-          <button type='submit' class='modal__btn btn'>Add to watched</button>
+          <button type='submit' class='modal__btn modal__btn--watched btn'>Add to watched</button>
         </li>
         <li class='modal__item-btn'>
-          <button type='submit' class='modal__btn btn'>Add to queue</button>
+          <button type='submit' class='modal__btn modal__btn--queue btn'>Add to queue</button>
+        </li>
+        <li class='modal__item-btn'>
+          <button type='submit' class='modal__btn modal__btn--queue-remove btn' data-id='{{id}}'>Remove from queue</button>
         </li>
       </ul>
     </div>
