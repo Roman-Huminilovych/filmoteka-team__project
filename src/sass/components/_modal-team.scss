@@ -10,7 +10,6 @@
   }
 }
 
-
 .modal-team-close-btn {
   position: absolute;
   width: 30px;
@@ -43,11 +42,10 @@
   border-radius: 44px;
   margin: 0 auto 32px auto;
   box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-
 }
 
 .team__bg {
-  padding: 43px 50px 20px;
+  padding: 20px;
   position: relative;
   border: 5px;
   border-radius: 25px;
@@ -56,18 +54,21 @@
   margin-left: 2px;
   margin-right: 2px;
 
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-  
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+    rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
 
   @include tablet-only() {
     padding: 20px 6px 36px;
+  }
+
+  @include desktop() {
+    padding: 43px 50px 20px;
   }
 }
 
 .team__text {
   display: block;
   position: relative;
-
 
   font-weight: 500;
   font-size: 12px;
@@ -99,10 +100,10 @@
   }
 }
 
-
-// slick 
+// slick
 .slick-list {
   overflow: hidden;
+  transition: transform var(--transition-prop);
 }
 
 .slick-track {
@@ -115,10 +116,6 @@
   align-items: top;
   justify-content: center;
   margin-top: 8px;
-
-  // @include tablet() {
-  //   margin-top: 24px;
-  // }
 }
 
 .slick-dots li {
@@ -163,15 +160,12 @@ li.slick-active button:hover {
   cursor: pointer;
 }
 
-
-
 // icons
 .social {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
-
 }
 
 .social__item,
@@ -184,10 +178,11 @@ li.slick-active button:hover {
   justify-content: center;
   align-items: center;
 
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.social__item+.social__item {
+.social__item + .social__item {
   margin-left: 10px;
 }
 

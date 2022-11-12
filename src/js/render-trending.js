@@ -1,4 +1,5 @@
 import { getMovies } from './get-movies';
+import { renderSearchPages } from './onSubmit';
 import makeCard from '../templates/card-template-homepage.hbs';
 import { activatePagination } from './pagination';
 import { getPageFromPagination } from './secondary-functions/get-page-from-pagination';
@@ -23,13 +24,14 @@ export async function renderTrending() {
     const pages = trending.total_pages;
 
     activatePagination({ current: 1, pages });
+    refs.pagination.removeEventListener('click', renderSearchPages);
     refs.pagination.addEventListener('click', renderPages);
   }
   spinner();
 }
 
 // дальше подключение пагинации
-function renderPages(e) {
+export function renderPages(e) {
   if (!getPageFromPagination(e.target, page)) {
     return;
   }

@@ -5,6 +5,7 @@
   padding-bottom: 40px;
 
   @include tablet() {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     gap: var(--gutter);
@@ -29,6 +30,7 @@
 
   @include mobile-only() {
     margin-bottom: var(--gutter-mob);
+    width: 280px;
 
     &:last-child {
       margin-bottom: 0;
@@ -89,10 +91,10 @@
   color: var(--accent-color);
 }
 
-  .films__genre {
-    border-right: solid 1px currentColor;
-    padding-right: .5em;
-    margin-right: .5em;
+.films__genre {
+  border-right: solid 1px currentColor;
+  padding-right: 0.5em;
+  margin-right: 0.5em;
 }
 
 .films__rating {
