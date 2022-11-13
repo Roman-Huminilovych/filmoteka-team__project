@@ -6,18 +6,14 @@ export async function onMovieCardClick(evt) {
   evt.preventDefault();
   const currentItem = evt.target.closest('li');
   let id = +currentItem.dataset.id;
-  
-  async function createModal() {
-    try {
-      document.querySelector('body').classList.add('modal-open');
 
-      const movieInfo = await (await getMovieById(id)).data;
-      renderModalFilm({ movieInfo });
-      activateModalBtns();   
-    } 
-    catch (error) {
-      console.log(error.message);
-    }
+  try {
+    document.querySelector('body').classList.add('modal-open');
+
+    const movieInfo = await (await getMovieById(id)).data;
+    renderModalFilm({ movieInfo });
+    activateModalBtns();
+  } catch (error) {
+    console.log(error);
   }
-  createModal();
 }
