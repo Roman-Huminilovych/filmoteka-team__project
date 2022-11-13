@@ -1,6 +1,6 @@
 const searchBtn = document.querySelector('.submit-btn');
 
-export function chekInputQuery() {
+export function checkInputQuery() {
   if (this.value.trim()) {
     searchBtn.disabled = false;
   } else {
