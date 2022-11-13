@@ -1,5 +1,5 @@
 import { renderTrending } from './js/trending/render-trending';
-import { onSubmit } from './js/search/onSubmit';
+import { onSubmit } from './js/search/on-search-submit';
 import { checkInputQuery } from './js/search/check-input-query';
 import debounce from 'lodash.debounce';
 import { onMovieCardClick } from './js/modal-movie-info';

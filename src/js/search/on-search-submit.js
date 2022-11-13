@@ -65,7 +65,6 @@ export async function onSubmit(e) {
     );
 
     if (getFetchMovieResponse.data.total_pages > 1) {
-
       pages = getFetchMovieResponse.data.total_pages;
 
       if (screen.width < 768) {
@@ -97,4 +96,8 @@ async function getSearchFetch() {
   const getFetchMovieResponse = await getMovies(PATH, page, query);
   const moviesArray = await getFetchMovieResponse.data.results;
   createMarkup(moviesArray, page);
+  document.querySelector('.films').scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
+  });
 }

@@ -2,9 +2,12 @@
     display: flex;
     justify-content: space-between;
     width: fit-content;
-    min-width: 440px;
     margin: 0 auto;
     padding-bottom: var(--section-padding);
+
+    @include tablet() {
+        min-width: 440px;
+    }
 
     &__pages {
         display: flex;
