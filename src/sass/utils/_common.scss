@@ -22,7 +22,7 @@ h3,
 h4,
 h5,
 h6,
-p, 
+p,
 a {
     margin: 0;
 }
@@ -61,13 +61,13 @@ a {
     }
 
     @include tablet-only() {
-        max-width: $tablet;
+        width: $tablet;
         padding-left: var(--gutter);
         padding-right: var(--gutter);
     }
 
     @include desktop() {
-        max-width: $desktop;
+        width: $desktop;
         padding-left: var(--gutter);
         padding-right: var(--gutter);
     }

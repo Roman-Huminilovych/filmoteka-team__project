@@ -1,6 +1,10 @@
 import { addToQueueOnClick } from '../library/queue-add';
 import { addToWatchedOnClick } from '../library/watched-add';
-import { deleteFromQueue } from './delete-from-queue';
+import {
+  deleteFromQueue,
+  deleteFromWatched,
+  removewatchedToQueue,
+} from './delete-from-queue';
 
 export function activateModalBtns() {
   const refs = {
@@ -19,14 +23,27 @@ export function activateModalBtns() {
   // для страницы "просмотренные"
   if (document.querySelector('#watched-btn.active')) {
     const buttonList = document.querySelector('.modal__list-btn');
-    buttonList.style.display = 'none';
+    // buttonList.style.display = 'none';
+    refs.addToWatchedBtn.style.display = 'none';
+    refs.removeBtn.innerHTML = 'Remove from watched';
+    refs.removeBtn.removeEventListener('click', addToWatchedOnClick);
+    refs.removeBtn.addEventListener('click', deleteFromWatched);
+    refs.removeBtn.addEventListener('click', closeModal);
+
+    refs.addToQueueBtn.style.display = 'none';
+    // refs.addToQueueBtn.innerHTML = 'Remove to Queue';
+    // refs.addToQueueBtn.removeEventListener('click', addToQueueOnClick);
+    // refs.addToQueueBtn.addEventListener('click', removewatchedToQueue);
+    // refs.addToQueueBtn.addEventListener('click', closeModal);
   }
   // для страницы очереди
   else if (document.querySelector('#queue-btn.active')) {
     refs.addToQueueBtn.style.display = 'none';
 
+    refs.removeBtn.innerHTML = 'Remove from Queue';
     refs.removeBtn.addEventListener('click', deleteFromQueue);
     refs.removeBtn.addEventListener('click', closeModal);
+    refs.addToWatchedBtn.removeEventListener('click', deleteFromWatched);
     refs.addToWatchedBtn.addEventListener('click', addToWatchedOnClick);
     refs.addToWatchedBtn.addEventListener('click', closeModal);
   }

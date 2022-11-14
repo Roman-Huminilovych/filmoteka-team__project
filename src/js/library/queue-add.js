@@ -3,7 +3,7 @@ import { getMovies } from '../fetch-functions/get-movies';
 import { watchedList } from './watched-add';
 
 //список фильмов для рендера странички
-const queueList = JSON.parse(localStorage.getItem('queueList')) || [];
+export const queueList = JSON.parse(localStorage.getItem('queueList')) || [];
 
 //кнопка добавления фильма в список (на модалке)
 
