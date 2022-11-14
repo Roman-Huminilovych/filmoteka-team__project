@@ -9,7 +9,8 @@
   @include centered();
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.25);
-  transition: opacity var(--transition-prop), visibility var(--transition-prop);
+  opacity: 1;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
 
   @include tablet() {
     padding: var(--gutter);
@@ -26,9 +27,12 @@
   position: relative;
   max-width: 480px;
   max-height: 100%;
-  background: #ffffff;
   padding: 48px 20px 40px 20px;
+
+  background: #ffffff;
   overflow: auto;
+  transition: transform 0.5s ease;
+
   @include tablet-only {
     max-width: 100%;
     padding: 40px 72px 40px 36px;
@@ -38,6 +42,10 @@
     display: flex;
     max-width: 100%;
     padding: 40px 12px;
+  }
+
+  .is-hidden & {
+    transform: translate(-50%, -50%) scale(0);
   }
 }
 
@@ -198,12 +206,10 @@
 
 .modal__list-btn {
   display: flex;
-  // gap: var(--gutter-mob);
   justify-content: center;
 
-  @include desktop {
+  @include tablet() {
     justify-content: flex-start;
-    gap: 15px;
     margin-left: 8px;
   }
 }

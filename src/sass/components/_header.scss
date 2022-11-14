@@ -1,14 +1,23 @@
+.header {
+    background-color: rgba(0, 0, 0, 0.56);
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 40px;
+    padding-bottom: 62px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    @include tablet() {
+        padding-bottom: 60px;
+    }
+}
+
 .header--main {
     display: flex;
     flex-direction: column;
     justify-content: center;
 
-    padding-top: 40px;
     padding-bottom: 92px;
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 
     @include mobile-only() {
         background-image: linear-gradient(
