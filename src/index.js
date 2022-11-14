@@ -3,6 +3,7 @@ import { onSubmit } from './js/search/on-search-submit';
 import { checkInputQuery } from './js/search/check-input-query';
 import debounce from 'lodash.debounce';
 import { onMovieCardClick } from './js/modal-movie-info';
+import {getGenres} from './js/fetch-functions/get-genres';
 
 $('.carousel').slick({
   dots: true,
@@ -22,6 +23,7 @@ const refs = {
   films: document.querySelector('.films'),
 };
 
+getGenres();
 renderTrending();
 
 refs.searchInput.addEventListener('input', debounce(checkInputQuery, 300));

@@ -3,8 +3,8 @@ import { getMovies } from '../fetch-functions/get-movies';
 export async function makeGenres(selector, page) {
   const genreFields = document.querySelectorAll(selector);
   
-  const path = 'genre/movie/list';
-  const genres = await (await getMovies(path)).data.genres;
+  
+  const genres = JSON.parse(localStorage.getItem('genres'));
 
   genreFields.forEach((item, idx) => {
     item.textContent = item.textContent.replace(/\n\s+/g, '');
