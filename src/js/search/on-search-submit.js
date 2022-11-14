@@ -7,6 +7,7 @@ import { renderSearchingWithScroll } from './render-searching-mobile-scroll';
 import Notiflix from 'notiflix';
 import { spinner } from '../spinner';
 import { observer } from '../trending/render-trending-mobile-scroll';
+import { changeBgIfQueryIsUkr } from '../secondary-functions/change-bg-on-ukr-query';
 
 if (screen.width < 768) {
   Notiflix.Notify.init({
@@ -44,6 +45,7 @@ export async function onSubmit(e) {
   e.preventDefault();
   observer.unobserve(document.querySelector('.guard'));
   query = e.currentTarget.elements.searchQuery.value;
+  changeBgIfQueryIsUkr(query);
   resetRequest();
 
   try {

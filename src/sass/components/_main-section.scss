@@ -6,6 +6,8 @@
 
   @include tablet() {
     width: 100%;
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
     display: flex;
     flex-wrap: wrap;
     gap: var(--gutter);

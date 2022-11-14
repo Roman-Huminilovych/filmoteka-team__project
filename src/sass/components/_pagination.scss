@@ -3,10 +3,11 @@
     justify-content: space-between;
     width: fit-content;
     margin: 0 auto;
-    padding-bottom: var(--section-padding);
+    padding-bottom: 40px;
 
     @include tablet() {
         min-width: 440px;
+        padding-bottom: var(--section-padding);
     }
 
     &__pages {

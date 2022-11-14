@@ -24,31 +24,19 @@
 
 .modal {
   position: relative;
-  // top: 20px;
-  // left: 50%;
-  // transform: translate(-50%, 0%);
-  // width: 280px;
   max-width: 480px;
-  // height: 940px;
   max-height: 100%;
   background: #ffffff;
   padding: 48px 20px 40px 20px;
   overflow: auto;
   @include tablet-only {
-    // top: 219px;
-    // left: 50%;
-    // transform: translate(-50%, 0%);
     max-width: 100%;
     padding: 40px 72px 40px 36px;
     display: flex;
   }
   @include desktop {
-    // top: 150px;
-    // left: 50%;
-    // transform: translate(-50%, 0%);
     display: flex;
     max-width: 100%;
-    // height: 558px;
     padding: 40px 12px;
   }
 }
@@ -117,7 +105,6 @@
 }
 
 .modal__title {
-  // margin-top: 20px;
   margin-bottom: 20px;
   font-weight: 500;
   font-size: 20px;
@@ -142,6 +129,9 @@
 
 .modal__attributes-name {
   margin-bottom: 8px;
+  display: flex;
+  align-items: flex-start;
+
   font-weight: 500;
   font-size: 12px;
   line-height: 1.33;
@@ -155,7 +145,6 @@
 .modal__attributes-title {
   display: inline-block;
   width: 50%;
-  // margin-right: 39px;
   @include desktop {
     width: 40%;
   }
@@ -164,24 +153,29 @@
 .modal__attributes-vote {
   width: 36px;
   height: 16px;
+  margin-right: 3px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
+
   font-weight: 500;
   font-size: 12px;
   line-height: 1.17;
   color: var(--text-color-light);
+
   background-color: var(--accent-color);
   border-radius: 5px;
 }
 
 .votes {
+  margin-left: 3px;
   color: var(--text-color-main);
   background-color: var(--bg-color);
 }
 
 .modal__attributes-text {
   color: var(--text-color-main);
+  width: 50%;
 }
 
 .modal__article {
@@ -204,8 +198,8 @@
 
 .modal__list-btn {
   display: flex;
-  justify-content: space-between;
-  //gap: 20px;
+  // gap: var(--gutter-mob);
+  justify-content: center;
 
   @include desktop {
     justify-content: flex-start;
@@ -214,12 +208,9 @@
   }
 }
 
-// .modal__item-btn {
-//   @include desktop {
-//     margin-left: 8px;
-//     margin-right: 7px;
-//   }
-// }
+.modal__item-btn {
+  margin-right: 10px;
+}
 
 .modal__item-btn:last-child {
   @include desktop {
