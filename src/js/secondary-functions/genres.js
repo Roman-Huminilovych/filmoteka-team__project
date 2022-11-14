@@ -2,20 +2,24 @@ import { getMovies } from '../fetch-functions/get-movies';
 
 export async function makeGenres(selector, page) {
   const genreFields = document.querySelectorAll(selector);
-  // console.log(genreFields);
+  
   const path = 'genre/movie/list';
   const genres = await (await getMovies(path)).data.genres;
-  // console.log(genres);
+
   genreFields.forEach((item, idx) => {
-    // console.log(item.textContent);
     item.textContent = item.textContent.replace(/\n\s+/g, '');
 
     if (item.textContent && !page) {
+
       item.textContent = getGenreFromId(item.textContent, genres);
     }
     // обрабатывает только новые карточки
     else if (item.textContent && idx >= (page - 1) * 20) {
       item.textContent = getGenreFromId(item.textContent, genres);
+    }
+    // пропускает старые карточки
+    else if ((item.textContent && idx < (page - 1) * 20)) {
+      return;
     }
     // если приходит пустой массив жанров
     else {

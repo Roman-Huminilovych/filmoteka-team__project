@@ -15,12 +15,13 @@ const options = {
   treshhold: 0,
 };
 
-const observer = new IntersectionObserver(renderNextPages, options);
+export const observer = new IntersectionObserver(renderNextPages, options);
 const path = 'trending/movie/day';
 let page = 1;
 let trending = null;
 
 export async function renderTrendingWithScroll() {
+  
   await renderMarkup();
   observer.observe(refs.guard);
 }

@@ -1,6 +1,6 @@
 import { renderTrendingWithScroll } from './render-trending-mobile-scroll';
 import { getMovies } from '../fetch-functions/get-movies';
-import { renderSearchPages } from '../search/onSubmit';
+import { renderSearchPages } from '../search/on-search-submit';
 import makeCard from '../../templates/card-template-homepage.hbs';
 import { activatePagination } from '../pagination';
 import { getPageFromPagination } from '../secondary-functions/get-page-from-pagination';
@@ -46,6 +46,10 @@ export function renderPages(e) {
   }
   page = getPageFromPagination(e.target, page);
   renderMarkup();
+  document.querySelector('.films').scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
+  });
 }
 
 async function renderMarkup() {

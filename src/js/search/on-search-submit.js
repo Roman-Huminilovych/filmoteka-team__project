@@ -6,6 +6,7 @@ import { getPageFromPagination } from '../secondary-functions/get-page-from-pagi
 import { renderSearchingWithScroll } from './render-searching-mobile-scroll';
 import Notiflix from 'notiflix';
 import { spinner } from '../spinner';
+import { observer } from '../trending/render-trending-mobile-scroll';
 
 if (screen.width < 768) {
   Notiflix.Notify.init({
@@ -30,7 +31,7 @@ const refs = {
 const PATH = '/search/movie';
 let page = 1;
 let pages = 1;
-let query = '';
+export let query = '';
 
 function resetRequest() {
   refs.container.innerHTML = '';
@@ -41,6 +42,7 @@ function resetRequest() {
 
 export async function onSubmit(e) {
   e.preventDefault();
+  observer.unobserve(document.querySelector('.guard'));
   query = e.currentTarget.elements.searchQuery.value;
   resetRequest();
 
@@ -66,7 +68,7 @@ export async function onSubmit(e) {
       pages = getFetchMovieResponse.data.total_pages;
 
       if (screen.width < 768) {
-        renderSearchingWithScroll(PATH, page, query);
+        renderSearchingWithScroll(pages);
       } else {
         activatePagination({ current: 1, pages });
         refs.pagination.removeEventListener('click', renderPages);
@@ -94,4 +96,8 @@ async function getSearchFetch() {
   const getFetchMovieResponse = await getMovies(PATH, page, query);
   const moviesArray = await getFetchMovieResponse.data.results;
   createMarkup(moviesArray, page);
+  document.querySelector('.films').scrollIntoView({
+    behavior: 'smooth',
+    block: 'start',
+  });
 }

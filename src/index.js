@@ -1,6 +1,6 @@
 import { renderTrending } from './js/trending/render-trending';
-import { onSubmit } from './js/search/onSubmit';
-import { chekInputQuery } from './js/search/chekInputQuery';
+import { onSubmit } from './js/search/on-search-submit';
+import { checkInputQuery } from './js/search/check-input-query';
 import debounce from 'lodash.debounce';
 import { onMovieCardClick } from './js/modal-movie-info';
 
@@ -24,6 +24,6 @@ const refs = {
 
 renderTrending();
 
-refs.searchInput.addEventListener('input', debounce(chekInputQuery, 300));
+refs.searchInput.addEventListener('input', debounce(checkInputQuery, 300));
 refs.searchForm.addEventListener('submit', onSubmit);
 refs.films.addEventListener('click', onMovieCardClick);
