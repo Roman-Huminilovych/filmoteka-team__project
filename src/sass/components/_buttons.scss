@@ -60,3 +60,37 @@
     min-width: 136px;
   }
 }
+
+.btn__up {
+  position: fixed;
+  bottom: 20px;
+  right: 10px;
+
+  width: 40px;
+  height: 40px;
+
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  cursor: pointer;
+  border: 0;
+  border-radius: 50%;
+  box-shadow: var(--card-shadow);
+
+  font-size: 0;
+  transition: opacity 1s ease;
+
+  &-svg {
+    width: 32px;
+    height: 32px;
+    fill: #000000;
+    stroke: blue;
+  }
+}
+
+.btn__up.fixed {
+  font-size: 0;
+  opacity: 1;
+  pointer-events: all;
+  visibility: visible;
+}

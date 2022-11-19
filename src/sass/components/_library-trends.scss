@@ -1,0 +1,60 @@
+.library__trends-list {
+    margin-top: 10px;
+    position: relative;
+}
+.library__trends-item,
+.library__trends-item img {
+    border-radius: 10px;
+}
+
+.library__trends-item {
+    margin-right: 10px;
+    cursor: pointer;
+
+    transition: box-shadow var(--transition-prop),
+        transform var(--transition-prop);
+
+    &:hover,
+    &:focus {
+        box-shadow: var(--card-shadow);
+        transform: scale(1.02);
+    }
+}
+
+.slick-arrow {
+    width: 40px;
+    height: 100%;
+
+    position: absolute;
+    z-index: 2;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.2;
+    cursor: pointer;
+    border: 0;
+    font-size: 0;
+    transition: opacity var(--transition-prop);
+
+    &:hover,
+    &:focus {
+        opacity: 0.7;
+    }
+}
+
+.slick-prev {
+    top: 0;
+    left: 0;
+    background-image: url(../images/library/chevron-left-solid.svg);
+}
+
+.slick-next {
+    top: 0;
+    right: 0;
+    background-image: url(../images/library/chevron-right-solid.svg);
+}
+
+.slick-track {
+    padding-top: 10px;
+    padding-bottom: 20px;
+}
