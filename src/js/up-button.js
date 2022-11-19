@@ -7,7 +7,7 @@ const options = {};
 export const headerObserver = new IntersectionObserver(showUpButton, options);
 
 function showUpButton([entry]) {
-  console.log(entry);
+  // console.log(entry);
   if (entry.isIntersecting) {
     refs.upButton.classList.remove('fixed');
   } else {

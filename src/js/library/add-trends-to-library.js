@@ -5,9 +5,11 @@ const refs = {
   trendsList: document.querySelector('.library__trends-list'),
 };
 
+const page = 1;
+
 export async function addTrendsToLibrary() {
   try {
-    const trending = await (await getMovies(path, (page = 1))).data;
+    const trending = await (await getMovies(path, page)).data;
     refs.trendsList.innerHTML = trendsInLibraryMarkup(trending.results);
 
     $('.library__trends-list').slick({
