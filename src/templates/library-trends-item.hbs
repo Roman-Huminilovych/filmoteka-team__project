@@ -1,0 +1,10 @@
+{{#each this}}
+<li class='library__trends-item' data-id="{{id}}">
+    {{#if poster_path}}
+    <img src='https://image.tmdb.org/t/p/w342{{poster_path}}' alt='Film "{{title}}" poster' loading='lazy' />
+    {{else}}
+    <img src='https://sd.keepcalms.com/i-w600/keep-calm-poster-not-found.jpg' alt='Film "{{title}}" poster'
+        loading='lazy' />
+    {{/if}}    
+</li>
+{{/each}}

@@ -13,7 +13,7 @@ const refs = {
   pagination: document.querySelector('.pagination'),
 };
 
-const path = 'trending/movie/day';
+export const path = 'trending/movie/day';
 let page = 1;
 let trending = null;
 

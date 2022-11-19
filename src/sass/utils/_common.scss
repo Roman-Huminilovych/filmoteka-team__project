@@ -1,5 +1,9 @@
 @import "~node_modules/modern-normalize/modern-normalize.css";
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: var(--font-main);
     font-size: var(--font-size);
@@ -53,6 +57,7 @@ a {
 
 .container {
     margin: 0 auto;
+    width: 100%;
 
     @include mobile-only() {
         max-width: 480px;
@@ -61,13 +66,13 @@ a {
     }
 
     @include tablet-only() {
-        width: $tablet;
+        max-width: $tablet;
         padding-left: var(--gutter);
         padding-right: var(--gutter);
     }
 
     @include desktop() {
-        width: $desktop;
+        max-width: $desktop;
         padding-left: var(--gutter);
         padding-right: var(--gutter);
     }
@@ -79,4 +84,20 @@ a {
 
 .backdrop {
     backdrop-filter: saturate(0.8) brightness(0.9);
+}
+
+.section-title {
+    margin-top: 10px;
+
+    @include font(500, 14px, 1);
+    text-transform: uppercase;
+    color: var(--text-color-main);
+
+    @include tablet-only() {
+        margin-top: 20px;
+    }
+
+    @include desktop() {
+        margin-top: 30px;
+    }
 }
