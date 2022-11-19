@@ -15,11 +15,11 @@ export async function onMovieCardClick(evt) {
     const movieId = await getMovieById(id);
     const movieInfo = await movieId.data;
     renderModalFilm(movieInfo);
-    if (currentItem.classList.contains('library__trends-item')) {
+/*     if (currentItem.classList.contains('library__trends-item')) {
       activateModalBtnsInLibTrends();
-    } else {
-      activateModalBtns();
-    }
+    } else { */
+      activateModalBtns(currentItem);
+    // }
   } catch (error) {
     console.log(error);
   }

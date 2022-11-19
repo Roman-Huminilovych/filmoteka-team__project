@@ -2,7 +2,7 @@ import { addToQueueOnClick } from '../library/queue-add';
 import { addToWatchedOnClick } from '../library/watched-add';
 import { deleteFromQueue, deleteFromWatched } from './delete-from-queue';
 
-export function activateModalBtns() {
+export function activateModalBtns(clickedCard) {
   const refs = {
     backdrop: document.querySelector('.backdrop__movie-info'),
     modalCloseBtn: document.querySelector('.modal-close-btn'),
@@ -17,8 +17,7 @@ export function activateModalBtns() {
   refs.modalCloseBtn.addEventListener('click', closeModal);
 
   // для страницы "просмотренные"
-  if (document.querySelector('#watched-btn.active')) {
-    const buttonList = document.querySelector('.modal__list-btn');
+  if (!clickedCard.classList.contains('library__trends-item') && document.querySelector('#watched-btn.active')) {
 
     refs.addToWatchedBtn.style.display = 'none';
     refs.removeBtn.innerHTML = 'Remove from watched';
@@ -29,7 +28,7 @@ export function activateModalBtns() {
     refs.addToQueueBtn.style.display = 'none';
   }
   // для страницы очереди
-  else if (document.querySelector('#queue-btn.active')) {
+  else if (!clickedCard.classList.contains('library__trends-item') && document.querySelector('#watched-btn.active')) {
     refs.addToQueueBtn.style.display = 'none';
 
     refs.removeBtn.innerHTML = 'Remove from Queue';
@@ -72,7 +71,7 @@ export function activateModalBtns() {
 }
 
 //Очень не нравится эта функция, 99% функционала есть в той, что выше
-export function activateModalBtnsInLibTrends() {
+/* export function activateModalBtnsInLibTrends() {
   const refs = {
     backdrop: document.querySelector('.backdrop__movie-info'),
     modalCloseBtn: document.querySelector('.modal-close-btn'),
@@ -112,4 +111,4 @@ export function activateModalBtnsInLibTrends() {
       closeModal();
     }
   }
-}
+} */
