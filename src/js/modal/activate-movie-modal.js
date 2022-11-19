@@ -28,7 +28,7 @@ export function activateModalBtns(clickedCard) {
     refs.addToQueueBtn.style.display = 'none';
   }
   // для страницы очереди
-  else if (!clickedCard.classList.contains('library__trends-item') && document.querySelector('#watched-btn.active')) {
+  else if (!clickedCard.classList.contains('library__trends-item') && document.querySelector('#queue-btn.active')) {
     refs.addToQueueBtn.style.display = 'none';
 
     refs.removeBtn.innerHTML = 'Remove from Queue';
