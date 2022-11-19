@@ -17,8 +17,10 @@ export function activateModalBtns(clickedCard) {
   refs.modalCloseBtn.addEventListener('click', closeModal);
 
   // для страницы "просмотренные"
-  if (!clickedCard.classList.contains('library__trends-item') && document.querySelector('#watched-btn.active')) {
-
+  if (
+    !clickedCard.classList.contains('library__trends-item') &&
+    document.querySelector('#watched-btn.active')
+  ) {
     refs.addToWatchedBtn.style.display = 'none';
     refs.removeBtn.innerHTML = 'Remove from watched';
     refs.removeBtn.removeEventListener('click', addToWatchedOnClick);
@@ -28,7 +30,10 @@ export function activateModalBtns(clickedCard) {
     refs.addToQueueBtn.style.display = 'none';
   }
   // для страницы очереди
-  else if (!clickedCard.classList.contains('library__trends-item') && document.querySelector('#queue-btn.active')) {
+  else if (
+    !clickedCard.classList.contains('library__trends-item') &&
+    document.querySelector('#queue-btn.active')
+  ) {
     refs.addToQueueBtn.style.display = 'none';
 
     refs.removeBtn.innerHTML = 'Remove from Queue';
@@ -69,46 +74,3 @@ export function activateModalBtns(clickedCard) {
     }
   }
 }
-
-//Очень не нравится эта функция, 99% функционала есть в той, что выше
-/* export function activateModalBtnsInLibTrends() {
-  const refs = {
-    backdrop: document.querySelector('.backdrop__movie-info'),
-    modalCloseBtn: document.querySelector('.modal-close-btn'),
-    addToQueueBtn: document.querySelector('.modal__btn--queue'),
-    addToWatchedBtn: document.querySelector('.modal__btn--watched'),
-    removeBtn: document.querySelector('.modal__btn--queue-remove'),
-  };
-
-  document.addEventListener('keydown', onCloseModalEsc);
-  refs.backdrop.addEventListener('click', onCloseModalBack);
-  refs.modalCloseBtn.addEventListener('click', closeModal);
-
-  refs.removeBtn.style.display = 'none';
-
-  refs.addToQueueBtn.addEventListener('click', addToQueueOnClick);
-  refs.addToWatchedBtn.addEventListener('click', addToWatchedOnClick);
-
-  function closeModal() {
-    refs.addToQueueBtn = document.querySelector('.modal__btn--queue');
-    refs.addToQueueBtn.removeEventListener('click', addToQueueOnClick);
-    refs.addToWatchedBtn = document.querySelector('.modal__btn--watched');
-    refs.addToWatchedBtn.removeEventListener('click', addToWatchedOnClick);
-
-    refs.backdrop.classList.add('is-hidden');
-    document.querySelector('body').classList.remove('modal-open');
-    document.removeEventListener('keydown', onCloseModalEsc);
-  }
-
-  function onCloseModalEsc(evt) {
-    if (evt.code === 'Escape') {
-      closeModal();
-    }
-  }
-
-  function onCloseModalBack(evt) {
-    if (evt.target === evt.currentTarget) {
-      closeModal();
-    }
-  }
-} */
