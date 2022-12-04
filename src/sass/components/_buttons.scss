@@ -81,14 +81,14 @@
   transition: opacity 1s ease;
 
   &-svg {
-    width: 32px;
-    height: 32px;
-    fill: #000000;
-    stroke: blue;
+    width: 15px;
+    height: 15px;
+    fill: #545454;
   }
 }
 
 .btn__up.fixed {
+  @include centered();
   font-size: 0;
   opacity: 1;
   pointer-events: all;
